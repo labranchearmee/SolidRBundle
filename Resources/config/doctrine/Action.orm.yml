@@ -1,0 +1,31 @@
+Brickstorm\SolidRBundle\Entity\Action:
+  type: entity
+  table: b_solidr__action
+  gedmo:
+    translation:
+      locale: locale
+  fields:
+    id:
+      id: true
+      type: integer
+      generator:
+        strategy: IDENTITY
+    created_at:
+      type: date
+      gedmo:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      gedmo:
+        timestampable:
+          on: update
+  manyToOne:
+    user:
+      targetEntity: Application\Sonata\UserBundle\Entity\User
+      cascade: {  }
+      joinColumns:
+        user_id:
+          referencedColumnName: id
+      orphanRemoval: false
+  lifecycleCallbacks: {  }
