@@ -1,0 +1,38 @@
+# Stof
+stof_doctrine_extensions:
+    default_locale: en_US
+    orm:
+        default:
+            tree:           false
+            timestampable:  true
+            sluggable:      true
+            translatable:   true
+            loggable:       true
+
+services:
+
+##Brickstorm
+
+#FacebookGraphBundle
+
+    #solidr
+    brsm.sms4food.admin.area:
+        class: Brickstorm\SolidRBundle\Admin\AreaAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: SolidR, label: Area }
+        arguments: [null, Brickstorm\SolidRBundle\Entity\Area, BrickstormSolidRBundle:Admin\AreaAdmin]
+    brsm.sms4food.admin.project:
+        class: Brickstorm\SolidRBundle\Admin\ProjectAdmin
+        tags: 
+            - { name: sonata.admin, manager_type: orm, group: SolidR, label: Project }
+        arguments: [null, Brickstorm\SolidRBundle\Entity\Project, BrickstormSolidRBundle:Admin\ProjectAdmin]
+    brsm.sms4food.admin.action:
+        class: Brickstorm\SolidRBundle\Admin\ActionAdmin
+        tags: 
+            - { name: sonata.admin, manager_type: orm, group: SolidR, label: Action }
+        arguments: [null, Brickstorm\SolidRBundle\Entity\Action, BrickstormSolidRBundle:Admin\ActionAdmin]
+    brsm.sms4food.admin.update:
+        class: Brickstorm\SolidRBundle\Admin\UpdateAdmin
+        tags: 
+            - { name: sonata.admin, manager_type: orm, group: SolidR, label: Update }
+        arguments: [null, Brickstorm\SolidRBundle\Entity\Update, BrickstormSolidRBundle:Admin\UpdateAdmin]

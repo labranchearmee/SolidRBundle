@@ -1,0 +1,58 @@
+Brickstorm\SolidRBundle\Entity\Area:
+  type: entity
+  table: b_solidr__area
+  gedmo:
+    translation:
+      locale: locale
+# using specific personal translation class:
+#     entity: Translatable\Fixture\CategoryTranslation
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    parent_id:
+      nullable: true
+      type: integer
+    name:
+      type: string
+      length: 250
+      fixed: false
+      gedmo:
+        - translatable
+    created_at:
+      type: date
+      gedmo:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      gedmo:
+        timestampable:
+          on: update
+  oneToMany:
+    children:
+      targetEntity: Area
+      mappedBy: parent
+  manyToOne:
+    parent:
+      nullable: true
+      targetEntity: Area
+      inversedBy: children  
+      joinColumns:
+        parent_id:
+          referencedColumnName: id
+  oneToOne:
+    root:
+      nullable: true
+      targetEntity: Area
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        root_id:
+          referencedColumnName: id
+  lifecycleCallbacks: {  }

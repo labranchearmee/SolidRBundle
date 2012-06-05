@@ -1,0 +1,52 @@
+Brickstorm\SolidRBundle\Entity\Project:
+  type: entity
+  table: b_solidr__project
+  gedmo:
+    translation:
+      locale: locale
+  fields:
+    id:
+      id: true
+      type: integer
+      generator:
+        strategy: IDENTITY
+    name:
+      type: string
+      length: 250
+      fixed: false
+      gedmo:
+        - translatable
+    description:
+      type: text
+      gedmo:
+        - translatable
+    created_at:
+      type: date
+      gedmo:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      gedmo:
+        timestampable:
+          on: update
+  oneToMany:
+    children:
+      targetEntity: Project
+      mappedBy: parent
+  manyToOne:
+    parent:
+      nullable: true
+      targetEntity: Project
+      inversedBy: children  
+      joinColumns:
+        parent_id:
+          referencedColumnName: id
+    creator:
+      targetEntity: Application\Sonata\UserBundle\Entity\User
+      cascade: {  }
+      joinColumns:
+        creator_id:
+          referencedColumnName: id
+      orphanRemoval: false
+  lifecycleCallbacks: {  }
