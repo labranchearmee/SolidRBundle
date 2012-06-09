@@ -1,0 +1,40 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+          <i class="icon-user icon-white"></i> {{ app.user.username }}
+          {% if is_granted("ROLE_MANAGER") or is_granted("ROLE_NOVICE_MANAGER") %} | {{ 'manager'|trans }}{% endif %}
+        {% endif %}
+      </a>
+      {#<form class="navbar-search pull-right">
+        <input type="text" class="search-query" placeholder="{{ 'search.placeholder'|trans }}">
+      </form>#}
+      
+      <div class="nav-collapse pull-right">
+        <ul class="nav">
+          {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="icon-user icon-white"></i> {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+
+              <li class="divider"></li>
+              <li>
+              <a href="{{ path('fos_user_security_logout') }}">
+                  {{ 'layout.logout'|trans }}
+              </a>
+              </li>
+            </ul>
+          </li>
+          {% else %}
+            <li><a href="{{ path('_security_login') }}">{{ 'layout.login'|trans }}</a></li>
+            <li><a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans }}</a></li>
+          {% endif %}
+        </ul>
+      </div><!--/.nav-collapse -->
+      <a class="brand" href="{{ path('homepage') }}" title="{{ 'service.name'|trans }}">SolidR</a>
+    </div>
+  </div>
+</div>
