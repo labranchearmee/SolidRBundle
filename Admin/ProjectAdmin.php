@@ -24,7 +24,15 @@ class ProjectAdmin extends Admin
         $formMapper
             ->with('Name')
                 ->add('name')
+                ->add('description')
+                ->add('unit_cost')
                 ->add('parent', 'sonata_type_model', array('required' => false))
+            ->end()
+            ->with('Area')
+                ->add('areas', 'sonata_type_model')
+            ->end()
+            ->with('Location')
+                ->add('cities', 'sonata_type_model')
             ->end()
         ;
     }

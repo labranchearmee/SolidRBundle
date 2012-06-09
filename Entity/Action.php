@@ -103,4 +103,154 @@ class Action
     {
         return $this->user;
     }
+    /**
+     * @var float $quantity
+     */
+    private $quantity;
+
+    /**
+     * @var boolean $is_daily
+     */
+    private $is_daily;
+
+    /**
+     * @var boolean $is_weekly
+     */
+    private $is_weekly;
+
+    /**
+     * @var boolean $is_monthly
+     */
+    private $is_monthly;
+
+    /**
+     * @var boolean $is_yearly
+     */
+    private $is_yearly;
+
+    /**
+     * @var boolean $is_public
+     */
+    private $is_public;
+
+
+    /**
+     * Set quantity
+     *
+     * @param float $quantity
+     */
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+    }
+
+    /**
+     * Get quantity
+     *
+     * @return float 
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * Set is_daily
+     *
+     * @param boolean $isDaily
+     */
+    public function setIsDaily($isDaily)
+    {
+        $this->is_daily = $isDaily;
+    }
+
+    /**
+     * Get is_daily
+     *
+     * @return boolean 
+     */
+    public function getIsDaily()
+    {
+        return $this->is_daily;
+    }
+
+    /**
+     * Set is_weekly
+     *
+     * @param boolean $isWeekly
+     */
+    public function setIsWeekly($isWeekly)
+    {
+        $this->is_weekly = $isWeekly;
+    }
+
+    /**
+     * Get is_weekly
+     *
+     * @return boolean 
+     */
+    public function getIsWeekly()
+    {
+        return $this->is_weekly;
+    }
+
+    /**
+     * Set is_monthly
+     *
+     * @param boolean $isMonthly
+     */
+    public function setIsMonthly($isMonthly)
+    {
+        $this->is_monthly = $isMonthly;
+    }
+
+    /**
+     * Get is_monthly
+     *
+     * @return boolean 
+     */
+    public function getIsMonthly()
+    {
+        return $this->is_monthly;
+    }
+
+    /**
+     * Set is_yearly
+     *
+     * @param boolean $isYearly
+     */
+    public function setIsYearly($isYearly)
+    {
+        $this->is_yearly = $isYearly;
+    }
+
+    /**
+     * Get is_yearly
+     *
+     * @return boolean 
+     */
+    public function getIsYearly()
+    {
+        return $this->is_yearly;
+    }
+
+    /**
+     * Set is_public
+     *
+     * @param boolean $isPublic
+     */
+    public function setIsPublic($isPublic)
+    {
+        $this->is_public = $isPublic;
+    }
+
+    /**
+     * Get is_public
+     *
+     * @return boolean 
+     */
+    public function getIsPublic()
+    {
+        return $this->is_public;
+    }
 }

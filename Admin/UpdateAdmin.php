@@ -25,6 +25,9 @@ class UpdateAdmin extends Admin
             ->with('Name')
                 ->add('name')
             ->end()
+            ->with('Action')
+              ->add('action', 'sonata_type_model')
+            ->end()
         ;
     }
 }

@@ -20,6 +20,9 @@ Brickstorm\SolidRBundle\Entity\Project:
       type: text
       gedmo:
         - translatable
+    unit_cost:
+      nullable: true
+      type: float
     created_at:
       type: date
       gedmo:
@@ -30,6 +33,27 @@ Brickstorm\SolidRBundle\Entity\Project:
       gedmo:
         timestampable:
           on: update
+  manyToMany:
+    cities:
+      targetEntity: Brickstorm\WorldBundle\Entity\City
+      joinTable:
+        name: b_solidr__project_cities
+        joinColumns:
+          city_id:
+            referencedColumnName: id
+        inverseJoinColumns:
+          project_id:
+            referencedColumnName: id
+    areas:
+      targetEntity: Area
+      joinTable:
+        name: b_solidr__project_areas
+        joinColumns:
+          area_id:
+            referencedColumnName: id
+        inverseJoinColumns:
+          project_id:
+            referencedColumnName: id
   oneToMany:
     children:
       targetEntity: Project

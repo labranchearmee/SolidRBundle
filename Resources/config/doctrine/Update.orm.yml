@@ -19,6 +19,10 @@ Brickstorm\SolidRBundle\Entity\Update:
       fixed: false
       gedmo:
         - translatable
+    description:
+      type: text
+      gedmo:
+        - translatable
     created_at:
       type: date
       gedmo:
