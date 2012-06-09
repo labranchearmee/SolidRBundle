@@ -154,4 +154,29 @@ class Update
     {
         return $this->action;
     }
+    /**
+     * @var text $description
+     */
+    private $description;
+
+
+    /**
+     * Set description
+     *
+     * @param text $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * Get description
+     *
+     * @return text 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
 }

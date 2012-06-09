@@ -16,6 +16,7 @@ Brickstorm\SolidRBundle\Entity\Project:
       fixed: false
       gedmo:
         - translatable
+        - sluggable
     description:
       type: text
       gedmo:
@@ -23,6 +24,15 @@ Brickstorm\SolidRBundle\Entity\Project:
     unit_cost:
       nullable: true
       type: float
+    slug:
+      type: string
+      length: 128
+      gedmo:
+        slug:
+          separator: -
+          style: default
+          fields:
+            - name
     created_at:
       type: date
       gedmo:
