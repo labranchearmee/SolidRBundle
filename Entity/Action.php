@@ -253,4 +253,79 @@ class Action
     {
         return $this->is_public;
     }
+    /**
+     * @var string $orderNumber
+     */
+    private $orderNumber;
+
+    /**
+     * @var decimal $amount
+     */
+    private $amount;
+
+
+    /**
+     * Set orderNumber
+     *
+     * @param string $orderNumber
+     */
+    public function setOrderNumber($orderNumber)
+    {
+        $this->orderNumber = $orderNumber;
+    }
+
+    /**
+     * Get orderNumber
+     *
+     * @return string 
+     */
+    public function getOrderNumber()
+    {
+        return $this->orderNumber;
+    }
+
+    /**
+     * Set amount
+     *
+     * @param decimal $amount
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+    }
+
+    /**
+     * Get amount
+     *
+     * @return decimal 
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+    /**
+     * @var Brickstorm\SolidRBundle\Entity\Project
+     */
+    private $project;
+
+
+    /**
+     * Set project
+     *
+     * @param Brickstorm\SolidRBundle\Entity\Project $project
+     */
+    public function setProject(\Brickstorm\SolidRBundle\Entity\Project $project)
+    {
+        $this->project = $project;
+    }
+
+    /**
+     * Get project
+     *
+     * @return Brickstorm\SolidRBundle\Entity\Project 
+     */
+    public function getProject()
+    {
+        return $this->project;
+    }
 }

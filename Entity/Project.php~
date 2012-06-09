@@ -293,4 +293,29 @@ class Project
     {
         return $this->unit_cost;
     }
+    /**
+     * @var string $slug
+     */
+    private $slug;
+
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
 }

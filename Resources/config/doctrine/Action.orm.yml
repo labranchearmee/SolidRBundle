@@ -27,6 +27,13 @@ Brickstorm\SolidRBundle\Entity\Action:
     is_public:
       default: false
       type: boolean
+    orderNumber:
+      type: string
+      unique: true
+    amount:
+      type: decimal
+      precision: 2
+      
     created_at:
       type: date
       gedmo:
@@ -37,12 +44,24 @@ Brickstorm\SolidRBundle\Entity\Action:
       gedmo:
         timestampable:
           on: update
+  OneToOne:
+    paymentInstruction:
+      targetEntity: JMS\Payment\CoreBundle\PaymentInstruction
+      cascade: {  }
+      joinColumns:
+        paymentInstruction_id:
+          referencedColumnName: id
   manyToOne:
+    project:
+      targetEntity: Project
+      cascade: {  }
+      joinColumns:
+        project_id:
+          referencedColumnName: id
     user:
       targetEntity: Application\Sonata\UserBundle\Entity\User
       cascade: {  }
       joinColumns:
         user_id:
           referencedColumnName: id
-      orphanRemoval: false
   lifecycleCallbacks: {  }
