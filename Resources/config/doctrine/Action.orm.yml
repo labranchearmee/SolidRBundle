@@ -25,9 +25,11 @@ Brickstorm\SolidRBundle\Entity\Action:
       nullable: true
       type: boolean
     is_public:
+      nullable: true
       default: false
       type: boolean
     orderNumber:
+      nullable: true
       type: string
       unique: true
     amount:
@@ -44,13 +46,12 @@ Brickstorm\SolidRBundle\Entity\Action:
       gedmo:
         timestampable:
           on: update
-  OneToOne:
+  oneToOne:
     paymentInstruction:
-      targetEntity: JMS\Payment\CoreBundle\PaymentInstruction
-      cascade: {  }
-      joinColumns:
-        paymentInstruction_id:
-          referencedColumnName: id
+      targetEntity: JMS\Payment\CoreBundle\Entity\PaymentInstruction
+      joinColumn:
+        name: paymentInstruction_id
+        referencedColumnName: id
   manyToOne:
     project:
       targetEntity: Project

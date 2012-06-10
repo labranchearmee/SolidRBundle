@@ -318,4 +318,29 @@ class Project
     {
         return $this->slug;
     }
+    /**
+     * @var Application\Sonata\MediaBundle\Entity\Media
+     */
+    private $medias;
+
+
+    /**
+     * Add medias
+     *
+     * @param Application\Sonata\MediaBundle\Entity\Media $medias
+     */
+    public function addMedia(\Application\Sonata\MediaBundle\Entity\Media $medias)
+    {
+        $this->medias[] = $medias;
+    }
+
+    /**
+     * Get medias
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getMedias()
+    {
+        return $this->medias;
+    }
 }

@@ -133,6 +133,25 @@ class Action
      */
     private $is_public;
 
+    /**
+     * @var string $orderNumber
+     */
+    private $orderNumber;
+
+    /**
+     * @var decimal $amount
+     */
+    private $amount;
+
+    /**
+     * @var Brickstorm\SolidRBundle\Entity\Project
+     */
+    private $project;
+
+    /**
+     * @var JMS\Payment\CoreBundle\Entity\PaymentInstruction
+     */
+    private $paymentInstruction;
 
     /**
      * Set quantity
@@ -253,16 +272,6 @@ class Action
     {
         return $this->is_public;
     }
-    /**
-     * @var string $orderNumber
-     */
-    private $orderNumber;
-
-    /**
-     * @var decimal $amount
-     */
-    private $amount;
-
 
     /**
      * Set orderNumber
@@ -303,11 +312,6 @@ class Action
     {
         return $this->amount;
     }
-    /**
-     * @var Brickstorm\SolidRBundle\Entity\Project
-     */
-    private $project;
-
 
     /**
      * Set project
@@ -327,5 +331,25 @@ class Action
     public function getProject()
     {
         return $this->project;
+    }
+
+    /**
+     * Set paymentInstruction
+     *
+     * @param JMS\Payment\CoreBundle\Entity\PaymentInstruction $paymentInstruction
+     */
+    public function setPaymentInstruction(\JMS\Payment\CoreBundle\Entity\PaymentInstruction $paymentInstruction)
+    {
+        $this->paymentInstruction = $paymentInstruction;
+    }
+
+    /**
+     * Get paymentInstruction
+     *
+     * @return JMS\Payment\CoreBundle\Entity\PaymentInstruction 
+     */
+    public function getPaymentInstruction()
+    {
+        return $this->paymentInstruction;
     }
 }

@@ -62,13 +62,14 @@ class PaymentController extends Controller
           ),
       ));
 
-      if ('POST' === $request->getMethod()) {
-          $form->bindRequest($request);
+      if ('POST' === $this->get('request')->getMethod()) {
+          $form->bindRequest($this->get('request'));
 
           if ($form->isValid()) {
-              $this->ppc->createPaymentInstruction($instruction = $form->getData());
+              $this->get('payment.plugin_controller')->createPaymentInstruction($instruction = $form->getData());
 
-              $order->setPaymentInstruction($instruction);
+              $object->setPaymentInstruction($instruction);
+              $this->em = $this->get('doctrine.orm.entity_manager');
               $this->em->persist($object);
               $this->em->flush($object);
 
