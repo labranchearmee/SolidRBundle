@@ -24,6 +24,9 @@ Brickstorm\SolidRBundle\Entity\Project:
     unit_cost:
       nullable: true
       type: float
+    devise:
+      type: string
+      length: 10
     slug:
       type: string
       length: 128

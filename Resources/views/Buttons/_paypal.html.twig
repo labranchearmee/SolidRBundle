@@ -3,11 +3,11 @@
 
 <table class="table table-striped table-bordered table-condensed">
   <tr>
-    <th>{{ 'choose.quantity' }}</th>
-    <th>{{ 'choose.occurrence' }}</th>
+    <th>{{ 'choose.quantity'|trans }}, 1 = {{ project.userCost }}</th>
+    <th>{{ 'choose.occurrence'|trans }}</th>
   </tr>
   <tr>
-    <td rowspan="4">   
+    <td rowspan="5">   
       <select name="quantity">
         <option value="1" selected>1</option>
         <option value="2">2</option>
