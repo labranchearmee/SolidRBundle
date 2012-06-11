@@ -40,4 +40,15 @@ Brickstorm\SolidRBundle\Entity\Update:
       joinColumns:
         action_id:
           referencedColumnName: id
+  manyToMany:
+    medias:
+      targetEntity: Application\Sonata\MediaBundle\Entity\Media
+      joinTable:
+        name: b_solidr__update_medias
+        joinColumns:
+          media_id:
+            referencedColumnName: id
+        inverseJoinColumns:
+          project_id:
+            referencedColumnName: id
   lifecycleCallbacks: {  }

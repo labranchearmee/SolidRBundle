@@ -79,6 +79,22 @@ class Project
     public $areas;
     
     /**
+     * @var float $unit_cost
+     */
+    private $unit_cost;
+
+    /**
+     * @var string $slug
+     */
+    private $slug;
+
+    /**
+     * @var Application\Sonata\MediaBundle\Entity\Media
+     */
+    public $medias;
+
+
+    /**
      * Get id
      *
      * @return integer 
@@ -268,11 +284,6 @@ class Project
     {
         return $this->areas;
     }
-    /**
-     * @var float $unit_cost
-     */
-    private $unit_cost;
-
 
     /**
      * Set unit_cost
@@ -293,11 +304,6 @@ class Project
     {
         return $this->unit_cost;
     }
-    /**
-     * @var string $slug
-     */
-    private $slug;
-
 
     /**
      * Set slug
@@ -318,10 +324,6 @@ class Project
     {
         return $this->slug;
     }
-    /**
-     * @var Application\Sonata\MediaBundle\Entity\Media
-     */
-    private $medias;
 
 
     /**

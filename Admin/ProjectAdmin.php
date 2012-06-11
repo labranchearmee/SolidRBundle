@@ -35,7 +35,7 @@ class ProjectAdmin extends Admin
                 ->add('cities', 'sonata_type_model')
             ->end()
             ->with('Medias')
-                ->add('medias', 'sonata_type_model')
+                ->add('medias', 'sonata_type_model', array('required' => false))
             ->end()
         ;
     }
