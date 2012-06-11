@@ -49,6 +49,6 @@ Brickstorm\SolidRBundle\Entity\Update:
           media_id:
             referencedColumnName: id
         inverseJoinColumns:
-          project_id:
+          update_id:
             referencedColumnName: id
   lifecycleCallbacks: {  }
