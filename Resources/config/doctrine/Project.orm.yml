@@ -78,6 +78,9 @@ Brickstorm\SolidRBundle\Entity\Project:
     children:
       targetEntity: Project
       mappedBy: parent
+    actions:
+      targetEntity: Action
+      mappedBy: project
   manyToOne:
     parent:
       nullable: true

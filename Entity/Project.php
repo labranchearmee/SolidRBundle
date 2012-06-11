@@ -345,4 +345,29 @@ class Project
     {
         return $this->medias;
     }
+    /**
+     * @var Brickstorm\SolidRBundle\Entity\Action
+     */
+    private $actions;
+
+
+    /**
+     * Add actions
+     *
+     * @param Brickstorm\SolidRBundle\Entity\Action $actions
+     */
+    public function addAction(\Brickstorm\SolidRBundle\Entity\Action $actions)
+    {
+        $this->actions[] = $actions;
+    }
+
+    /**
+     * Get actions
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getActions()
+    {
+        return $this->actions;
+    }
 }

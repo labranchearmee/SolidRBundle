@@ -52,6 +52,10 @@ Brickstorm\SolidRBundle\Entity\Action:
       joinColumn:
         name: paymentInstruction_id
         referencedColumnName: id
+  oneToMany:
+    updates:
+      targetEntity: Update
+      mappedBy: action
   manyToOne:
     project:
       targetEntity: Project

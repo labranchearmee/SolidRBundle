@@ -179,4 +179,33 @@ class Update
     {
         return $this->description;
     }
+    /**
+     * @var Application\Sonata\MediaBundle\Entity\Media
+     */
+    private $medias;
+
+    public function __construct()
+    {
+        $this->medias = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add medias
+     *
+     * @param Application\Sonata\MediaBundle\Entity\Media $medias
+     */
+    public function addMedia(\Application\Sonata\MediaBundle\Entity\Media $medias)
+    {
+        $this->medias[] = $medias;
+    }
+
+    /**
+     * Get medias
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getMedias()
+    {
+        return $this->medias;
+    }
 }

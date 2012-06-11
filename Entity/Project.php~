@@ -79,6 +79,22 @@ class Project
     public $areas;
     
     /**
+     * @var float $unit_cost
+     */
+    private $unit_cost;
+
+    /**
+     * @var string $slug
+     */
+    private $slug;
+
+    /**
+     * @var Application\Sonata\MediaBundle\Entity\Media
+     */
+    public $medias;
+
+
+    /**
      * Get id
      *
      * @return integer 
@@ -268,11 +284,6 @@ class Project
     {
         return $this->areas;
     }
-    /**
-     * @var float $unit_cost
-     */
-    private $unit_cost;
-
 
     /**
      * Set unit_cost
@@ -293,11 +304,6 @@ class Project
     {
         return $this->unit_cost;
     }
-    /**
-     * @var string $slug
-     */
-    private $slug;
-
 
     /**
      * Set slug
@@ -317,5 +323,51 @@ class Project
     public function getSlug()
     {
         return $this->slug;
+    }
+
+
+    /**
+     * Add medias
+     *
+     * @param Application\Sonata\MediaBundle\Entity\Media $medias
+     */
+    public function addMedia(\Application\Sonata\MediaBundle\Entity\Media $medias)
+    {
+        $this->medias[] = $medias;
+    }
+
+    /**
+     * Get medias
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getMedias()
+    {
+        return $this->medias;
+    }
+    /**
+     * @var Brickstorm\SolidRBundle\Entity\Action
+     */
+    private $actions;
+
+
+    /**
+     * Add actions
+     *
+     * @param Brickstorm\SolidRBundle\Entity\Action $actions
+     */
+    public function addAction(\Brickstorm\SolidRBundle\Entity\Action $actions)
+    {
+        $this->actions[] = $actions;
+    }
+
+    /**
+     * Get actions
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getActions()
+    {
+        return $this->actions;
     }
 }
