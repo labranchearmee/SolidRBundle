@@ -26,6 +26,7 @@ class ProjectAdmin extends Admin
                 ->add('name')
                 ->add('description')
                 ->add('unit_cost')
+                ->add('devise')
                 ->add('parent', 'sonata_type_model', array('required' => false))
             ->end()
             ->with('Area')

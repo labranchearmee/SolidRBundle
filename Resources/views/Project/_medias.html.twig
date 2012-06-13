@@ -1,0 +1,12 @@
+<div class="pull-right">
+  {% if project.medias %}
+    <div class="carousel-container">
+    {% include 'BrickstormSolidRBundle:Project:_carousel.html.twig' with {'medias': project.medias, 'id': project.id} %}
+    </div>
+  {% endif %}
+  <br/>
+  {% if map is defined %}
+    {{ google_map_container(map) }}
+    {{ google_map_js(map) }}
+  {% endif %}
+</div>

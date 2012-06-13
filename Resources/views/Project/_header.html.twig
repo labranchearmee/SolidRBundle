@@ -1,12 +1,4 @@
 <div class="well">
-
-{% if map is defined %}
-<div class="pull-right">
-{{ google_map_container(map) }}
-{{ google_map_js(map) }}
-</div>
-{% endif %}
-
 {% if project.parent %}
 <h1>{{ project.parent.name }} <small>
   {% for city in project.parent.cities %}
@@ -36,24 +28,16 @@
     <p>{{ child.description }}</p>
     </td>
     <td>
-    <a class="btn btn-primary" href="{{ path('participate', {'id' : child.id, 'slug' : child.slug}) }}}">{{ 'i.participate'|trans }}</a>
+    <a class="btn btn-large btn-primary" href="{{ path('participate', {'id' : child.id, 'slug' : child.slug}) }}">{{ 'i.participate'|trans }} &raquo;</a>
     </td>
     </tr>
     {% endfor %}
   </table>
-{% else %}
-  <br/>
-  <p><a class="btn btn-primary" href="{{ path('participate', {'id' : project.id, 'slug' : project.slug}) }}}">{{ 'i.participate'|trans }}</a></p>
 {% endif %}
 
+</div>
 
 
+<p><a class="btn btn-large btn-primary" href="{{ path('participate', {'id' : project.id, 'slug' : project.slug}) }}">{{ 'i.participate'|trans }} &raquo;</a></p>
 <br/>
 <hr />
-{% if project.medias %}
-<div class="carousel-container">
-{% include 'BrickstormSolidRBundle:Project:_carousel.html.twig' with {'medias': project.medias, 'id': project.id} %}
-</div>
-{% endif %}
-
-</div>
