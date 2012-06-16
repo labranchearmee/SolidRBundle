@@ -31,8 +31,12 @@ class Project
     }
 
     
+    public function userFees() {
+      return $this->userCost() * 0.1;
+    }
+    
     public function userCost() {
-      return $this->convert('EURO') . ' €';
+      return $this->convert('EURO');
     }
 
     public function convert($devise) {

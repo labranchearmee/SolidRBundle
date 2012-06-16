@@ -1,22 +1,31 @@
 <div class="well">
+
+{% for area in project.areas %}
+<span class="label label-info">{{ area }}</span> &nbsp;
+{% endfor %}
+
+<br/>
 {% if project.parent %}
 <h1>{{ project.parent.name }} <small>
   {% for city in project.parent.cities %}
   {{ city }} ({{ city.province.country.name }})
   {% endfor %}
 </small></h1>
-<h2>{{ project.name }}</h2>
+<h2 class="inline-block">{{ project.name }}</h2>
 {% else %}
-<h1>{{ project.name }} <small>
+<h1 class="inline-block">{{ project.name }} <small>
   {% for city in project.cities %}
   {{ city }} ({{ city.province.country.name }})
   {% endfor %}
 </small></h1>
 {% endif %}
 
+{% if project.userCost > 0 %}
+<span class="badge badge-inverse"><big>{{ project.userCost }}</big> &nbsp;<i>- &nbsp;{{ project.localCost }}</i></span>
+{% endif %}
+
 <br/>
 <p>{{ project.description }}</p>
-
 
 <br/>
 {% if project.children|length %}
@@ -24,7 +33,7 @@
     {% for child in project.children %}
     <tr>
     <td>
-    <h3>{{ child.name }} <small>{{ child.localCost }} = {{ child.userCost }}</small></h3>
+    <h3>{{ child.name }} <span class="badge badge-inverse"><big>{{ child.userCost }}</big> &nbsp;<i>- &nbsp;{{ child.localCost }}</i></span></h3>
     <p>{{ child.description }}</p>
     </td>
     <td>
@@ -36,8 +45,3 @@
 {% endif %}
 
 </div>
-
-
-<p><a class="btn btn-large btn-primary" href="{{ path('participate', {'id' : project.id, 'slug' : project.slug}) }}">{{ 'i.participate'|trans }} &raquo;</a></p>
-<br/>
-<hr />

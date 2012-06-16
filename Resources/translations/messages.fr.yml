@@ -1,8 +1,8 @@
 service:
     description: agissez avec l'Amndrc !
 choose:
-    quantity: Je choisis combien
-    occurrence: je soutiens le projet
+    quantity: Combien ?
+    occurrence: A quel rythme ?
 i.participate: 'Je participe'
 participate:
     oneshot: 'une fois'
@@ -12,5 +12,7 @@ participate:
     yearly: 'une fois par an'
 paypal.button: 'je paie avec Paypal'
 quantity: Quantité
+cost: Coût
+launch.paypal: Envoyer l'argent avec Paypal
 
 
