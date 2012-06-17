@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the BrickstormAmndrcBundle package.
+ * This file is part of the BrickstormSolidRBundle package.
  *
  * (c) Brickstorm <http://brickstorm.org/>
  *
@@ -14,78 +14,44 @@ namespace Brickstorm\SolidRBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-use JMS\Payment\CoreBundle\Entity\Payment;
-use JMS\Payment\CoreBundle\PluginController\Result;
-use JMS\Payment\CoreBundle\Plugin\Exception\ActionRequiredException;
-use JMS\Payment\CoreBundle\Plugin\Exception\Action\VisitUrl;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-
 use Brickstorm\SolidRBundle\Entity\Action;
+
+//use Brickstorm\SolidRBundle\Controller\PaymentController as BaseController;
 
 /**
  * @Route("/payments")
  */
-class PaymentController extends Controller
+class PaymentController //extends BaseController
 {
-    /** @DI\Inject */
-    private $request;
-
-    /** @DI\Inject */
-    private $router;
-
-    /** @DI\Inject("doctrine.orm.entity_manager") */
-    private $em;
-
-    /** @DI\Inject("payment.plugin_controller") */
-    private $ppc;
+    /**
+     *
+     */
+    public function successAction(Request $request)
+    {
+      return $this->render('BrickstormSolidRBundle:Payment:success.html.twig');
+    }
 
     /**
      *
      */
-    public function processAction($object)
+    public function processAction($object=null)
     {
+      $em = $this->getDoctrine()->getEntityManager();
+      $p  = $em->getRepository('BrickstormSolidRBundle:Project')
+               ->findOneById($this->get('request')->get('id'));
       
-      $form = $this->get('form.factory')->create('jms_choose_payment_method', null, array(
-          'currency' => 'EUR',
-          'amount'   => $object->getAmount(),
-          'predefined_data' => array(
-              'paypal_express_checkout' => array(
-                  'return_url' => $this->get('router')->generate('payment_complete', array(
-                      'orderNumber' => $object->getOrderNumber(),
-                  ), true),
-                  'cancel_url' => $this->get('router')->generate('payment_cancel', array(
-                      'orderNumber' => $object->getOrderNumber(),
-                  ), true)
-              ),
-          ),
-      ));
+      $object = new Action;
+      $object->setProject($p);
+      $object->setAmount(5);
+      $object->setQuantity($this->get('request')->get('quantity', 1));
 
-      if ('POST' === $this->get('request')->getMethod()) {
-          $form->bindRequest($this->get('request'));
-
-          if ($form->isValid()) {
-              $this->get('payment.plugin_controller')->createPaymentInstruction($instruction = $form->getData());
-
-              $object->setPaymentInstruction($instruction);
-              $this->em = $this->get('doctrine.orm.entity_manager');
-              $this->em->persist($object);
-              $this->em->flush($object);
-
-              return new RedirectResponse($this->get('router')->generate('payment_complete', array(
-                  'orderNumber' => $object->getOrderNumber(),
-              )));
-          }
+      $solidr = parent::processAction($object);
+      if (is_array($solidr)) {
+        return $this->render('BrickstormSolidRBundle:Payment:process.html.twig', $solidr);
+      } else {
+        return $solidr;
       }
-
-      return array(
-          'form' => $form->createView()
-      );
+      
     }
 
-    // ...
-
-    /** @DI\LookupMethod("form.factory") */
-    protected function getFormFactory() { }
 }

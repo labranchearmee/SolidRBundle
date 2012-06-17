@@ -3,6 +3,8 @@ service:
 choose:
     quantity: Combien ?
     occurrence: A quel rythme ?
+    paypal: Payer avec PayPal
+    check: Paiement par chèque
 i.participate: 'Je participe'
 participate:
     oneshot: 'une fois'
@@ -10,9 +12,51 @@ participate:
     weekly: 'chaque semaine'
     monthly: 'tous les mois'
     yearly: 'une fois par an'
-paypal.button: 'je paie avec Paypal'
 quantity: Quantité
 cost: Coût
-launch.paypal: Envoyer l'argent avec Paypal
 
+amndrc:
+    description: Je sais à qui et pour quoi je donne !
+    name: Solid'R
+    url: http://www.solidr.org
+cgvu: Conditions générales d'utilisation
+contact.us: Nous contacter
+powered.by: Réalisé par
+brickstorm: LaBrancheArmée
+manager: __manager
+layout:
+    logout: Se déconnecter
+    login: Se connecter
+    register: Créer un compte
+    logged_in_as: Connecté comme
+page:
+    title:
+        home: Ossio, les projets de l'Amndrc
+        project: Projet
+current.projects: Projets en cours
+location: Lieu
+see:
+    childrens: Actions du projet
+    project: Voir le projet
+i:
+  participate: Je participe
+  participate.pitch: Quelque soit le rythme que vous choisissez, l'Amndrc vous tient au courant mensuellement de l'avancée du projet ; compte-rendu, photos
+see:
+    details: Voir les détails
+    project: Voir le projet
+project:
+  actions: Les actions en cours
+  details: Le projet en détails
+  created.by: Projet réalisé par
+action.updates: Les retours
+send: Envoyer
+send.money: Envoyer l'argent
 
+home.intro:
+    service: L'Amndrc vous permet de découvrir des actions concrètes pour lesquelles les habitants ont besoin de soutien financier. Ce site de l'Amndrc vous permet aider directement à les réaliser, en choisissant quelle action vous intéresse. Pour chaque action financée, nous nous engageons à vous faire un retour rapide (sous un mois environ) avec un compte-rendu de l'action et  si possible des photos associées.
+    subscribe: Vous pouvez choisir de soutenir une action dans la durée en choississant un prélèvement régulier. Vous serez alors tenu au courant régulièrement des avancées et des actions réalisées dur place. 
+
+warning.fee:
+    pitch: Le coût de réalisation sur place de votre action est de %amount% €. Ce montant ne comprend pas les coûts de collecte et d'envoi de l'argent.
+    amount: Ces charges s'élèvent à %fees% €. 
+    total: Vous allez donc payer %total% €, montant sur lequel %amount% € ira directement à la réalisation de l'action que vous avez choisi de soutenir.

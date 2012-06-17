@@ -85,6 +85,12 @@ Brickstorm\SolidRBundle\Entity\Project:
       targetEntity: Action
       mappedBy: project
   manyToOne:
+    organization:
+      targetEntity: Organization
+      inversedBy: projects  
+      joinColumns:
+        organization_id:
+          referencedColumnName: id
     parent:
       nullable: true
       targetEntity: Project

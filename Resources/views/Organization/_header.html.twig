@@ -1,0 +1,35 @@
+<div class="well">
+
+{% for area in organization.areas %}
+<span class="label label-info">{{ area }}</span> &nbsp;
+{% endfor %}
+
+<br/>
+{% if organization.parent %}
+<h1>{{ organization.parent.name }}</h1>
+<h2 class="inline-block">{{ organization.name }}</h2>
+{% else %}
+<h1 class="inline-block">{{ organization.name }}</h1>
+{% endif %}
+
+<br/>
+<p>{{ organization.description }}</p>
+
+<br/>
+{% if organization.children|length %}
+  <table id="organization-children" class="table table-bordered table-striped table-condensed">
+    {% for child in organization.children %}
+    <tr>
+    <td>
+    <h3>{{ child.name }}</h3>
+    <p>{{ child.description }}</p>
+    </td>
+    <td>
+    <a class="btn btn-large btn-primary" href="{{ path('organization', {'id' : child.id, 'slug' : child.slug}) }}">{{ 'see.details'|trans }} &raquo;</a>
+    </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endif %}
+
+</div>

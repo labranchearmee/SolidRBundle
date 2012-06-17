@@ -20,6 +20,8 @@
 </small></h1>
 {% endif %}
 
+<p>{{ 'by.organization'|trans }} : <a href="{{ path('organization', {'id': project.organization.id, 'slug': project.organization.slug}) }}">{{ project.organization.name }}</a></p>
+
 {% if project.userCost > 0 %}
 <span class="badge badge-inverse"><big>{{ project.userCost }}</big> &nbsp;<i>- &nbsp;{{ project.localCost }}</i></span>
 {% endif %}
@@ -37,7 +39,7 @@
     <p>{{ child.description }}</p>
     </td>
     <td>
-    <a class="btn btn-large btn-primary" href="{{ path('participate', {'id' : child.id, 'slug' : child.slug}) }}">{{ 'i.participate'|trans }} &raquo;</a>
+    <a class="btn btn-large btn-primary" href="{{ path('participate', {'id': child.id, 'slug': child.slug}) }}">{{ 'i.participate'|trans }} &raquo;</a>
     </td>
     </tr>
     {% endfor %}

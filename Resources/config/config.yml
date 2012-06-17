@@ -21,6 +21,11 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: SolidR, label: Area }
         arguments: [null, Brickstorm\SolidRBundle\Entity\Area, BrickstormSolidRBundle:Admin\AreaAdmin]
+    brsm.sms4food.admin.organization:
+        class: Brickstorm\SolidRBundle\Admin\OrganizationAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: SolidR, label: Organization }
+        arguments: [null, Brickstorm\SolidRBundle\Entity\Organization, BrickstormSolidRBundle:Admin\OrganizationAdmin]
     brsm.sms4food.admin.project:
         class: Brickstorm\SolidRBundle\Admin\ProjectAdmin
         tags: 

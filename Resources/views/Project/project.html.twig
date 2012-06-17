@@ -1,0 +1,45 @@
+{% extends 'BrickstormSolidRBundle::layout.html.twig' %}
+
+{% block title %}{{ project.name }} - {{ 'page.title.project'|trans }}{% endblock %}
+
+
+{% block content %}
+
+{% include 'BrickstormSolidRBundle:Project:_medias.html.twig' with {'project': project} %}
+
+
+<div class="main-col">
+{% include 'BrickstormSolidRBundle:Project:_header.html.twig' with {'project': project, 'map': map} %}
+
+{% if project.children|length < 1 %}
+<p><a class="btn btn-large btn-primary" href="{{ path('participate', {'id' : project.id, 'slug' : project.slug}) }}">{{ 'i.participate'|trans }} &raquo;</a></p>
+{% endif %}
+
+<br/>
+<hr />
+
+<h2>{{ 'project.actions'|trans }}</h2>
+{% for action in project.actions %}
+  <div class="alert alert-info">
+    <strong>{{ 'quantity'|trans }}: {{ action.quantity }}, le {{ action.createdAt|date("d/m/Y") }}</strong>
+    <br/>
+    {{ 'action.updates'|trans }} <span class="badge badge-info">{{ 'action.updates'|length }}</span>
+    <ul>
+    {% for update in action.updates %}
+      <li>
+      {{ update }}
+      {% if update.medias %}
+        <div style="width:400px;">
+        {% include 'BrickstormSolidRBundle:Project:_carousel.html.twig' with {'medias': update.medias, 'id': update.id} %}
+        </div>
+      {% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+  </div>
+
+{% endfor %}
+</div>
+
+
+{% endblock %}

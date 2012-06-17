@@ -1,0 +1,86 @@
+Brickstorm\SolidRBundle\Entity\Organization:
+  type: entity
+  table: b_solidr__organization
+  gedmo:
+    translation:
+      locale: locale
+  fields:
+    id:
+      id: true
+      type: integer
+      generator:
+        strategy: IDENTITY
+    name:
+      type: string
+      length: 250
+      fixed: false
+      gedmo:
+        - translatable
+        - sluggable
+    description:
+      type: text
+      gedmo:
+        - translatable
+    slug:
+      type: string
+      length: 128
+      gedmo:
+        slug:
+          separator: -
+          style: default
+          fields:
+            - name
+    created_at:
+      type: date
+      gedmo:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      gedmo:
+        timestampable:
+          on: update
+  manyToMany:
+    medias:
+      targetEntity: Application\Sonata\MediaBundle\Entity\Media
+      joinTable:
+        name: b_solidr__organization_medias
+        joinColumns:
+          media_id:
+            referencedColumnName: id
+        inverseJoinColumns:
+          organization_id:
+            referencedColumnName: id
+    areas:
+      targetEntity: Area
+      joinTable:
+        name: b_solidr__organization_areas
+        joinColumns:
+          area_id:
+            referencedColumnName: id
+        inverseJoinColumns:
+          organization_id:
+            referencedColumnName: id
+  oneToMany:
+    children:
+      targetEntity: Organization
+      mappedBy: parent
+    projects:
+      targetEntity: Project
+      mappedBy: organization
+  manyToOne:
+    parent:
+      nullable: true
+      targetEntity: Organization
+      inversedBy: children  
+      joinColumns:
+        parent_id:
+          referencedColumnName: id
+    creator:
+      targetEntity: Application\Sonata\UserBundle\Entity\User
+      cascade: {  }
+      joinColumns:
+        creator_id:
+          referencedColumnName: id
+      orphanRemoval: false
+  lifecycleCallbacks: {  }

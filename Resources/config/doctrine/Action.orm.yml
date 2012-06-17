@@ -28,6 +28,10 @@ Brickstorm\SolidRBundle\Entity\Action:
       nullable: true
       default: false
       type: boolean
+    is_complete:
+      nullable: true
+      default: false
+      type: boolean
     orderNumber:
       nullable: true
       type: string

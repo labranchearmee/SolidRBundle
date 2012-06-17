@@ -1,0 +1,15 @@
+{% extends 'BrickstormAmndrcBundle::layout.html.twig' %}
+
+{% block title %}{{ 'service.name'|trans }} - {{ 'page.title.home'|trans }}{% endblock %}
+
+
+{% block content %}
+
+
+    <form action="" method="post" {{ form_enctype(form) }}>
+      
+      {{ form_widget(form) }}
+      <input type="submit" class="btn btn-info btn-large" value="{{ 'send'|trans }} &raquo;">
+    </form>
+
+{% endblock %}

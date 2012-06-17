@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Cabin:400,700');
+
+/* Brickstorm */
+.brickstorm {
+  font-family: 'Lobster',cursive;
+  font-weight: normal;
+  text-rendering: optimizelegibility;
+  line-height: 1;
+  color:inherit;
+  font-size:2em;
+  text-align:center;
+  color:#CCC;
+}
+
+.navbar .brand {
+  font-family: 'Lobster',cursive;
+font-size:2.0em;
+padding:5px 20px;
+}
+
+.navbar .brand span {
+font-size: 0.8em;
+padding-right: 0;
+padding-left: 0;
+margin-left: 20px;
+text-shadow: 0 1px 0 rgba(255, 255, 255, .1), 0 0 30px rgba(255, 255, 255, .125);
+-webkit-transition: all .2s linear;
+-moz-transition: all .2s linear;
+transition: all .2s linear;
+}
+
+form.actions {
+  width: 600px;
+}
+
+.main-col {
+margin-right: 550px;
+}
+
+.carousel-container {
+  width:500px;
+  height:375px;
+  border-radius:7px;
+}
+
+#map_canvas {
+}
+
+#project-children {
+  width:600px;
+}
+
+footer {
+clear:both;
+}
+
+.inline-block {
+display:inline-block;
+}

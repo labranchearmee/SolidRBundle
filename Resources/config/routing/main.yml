@@ -1,0 +1,63 @@
+homepage:
+    pattern:  /
+    defaults: { _controller: BrickstormSolidRBundle:Main:home }
+cgvu:
+    pattern:  /
+    defaults: { _controller: BrickstormSolidRBundle:Main:cgvu }
+contact_us:
+    pattern:  /
+    defaults: { _controller: BrickstormSolidRBundle:Main:contactus }
+api_intro:
+    pattern:  /
+    defaults: { _controller: BrickstormSolidRBundle:Main:contactus }
+
+#project
+payment_modal:
+    pattern:  /{_locale}/project/{id}/modal
+    defaults: { _controller: BrickstormSolidRBundle:Main:modal }
+    requirements:
+        id: \d+
+payment_complete:
+    pattern:  /{_locale}/participate-success
+    defaults: { _controller: BrickstormSolidRBundle:Payment:success }
+payment_cancel:
+    pattern:  /{_locale}/participate-cancel
+    defaults: { _controller: BrickstormSolidRBundle:Payment:cancel }
+participate:
+    pattern:  /{_locale}/project/{id}-{slug}/participate
+    defaults: { _controller: BrickstormSolidRBundle:Project:participate }
+    requirements:
+        id: \d+
+        slug: "[a-zA-Z1-9\-_\/]+"
+payment:
+    pattern:  /{_locale}/project/{id}-{slug}/paypal
+    defaults: { _controller: BrickstormSolidRBundle:Payment:process }
+    requirements:
+        id: \d+
+        slug: "[a-zA-Z1-9\-_\/]+"
+project:
+    pattern:  /{_locale}/project/{id}-{slug}
+    defaults: { _controller: BrickstormSolidRBundle:Project:project }
+    requirements:
+        id: \d+
+        slug: "[a-zA-Z1-9\-_\/]+"
+organization:
+    pattern:  /{_locale}/organization/{id}-{slug}
+    defaults: { _controller: BrickstormSolidRBundle:Organization:organization }
+    requirements:
+        id: \d+
+        slug: "[a-zA-Z1-9\-_\/]+"
+
+
+#fbconnect
+_security_login:
+    pattern: /{_locale}/login
+    defaults: { _controller: FOSUserBundle:Security:login }
+    requirements:
+        _locale: en|fr
+_security_check:
+    pattern:  /login_check
+    defaults: { _controller: BrickstormSms4FoodBundle:User:loginCheck }
+_security_check_fbconnect:
+    pattern:  /login_check_fbconnect
+    defaults: { _controller: BrickstormSms4FoodBundle:User:loginCheckFbconnect }

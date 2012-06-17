@@ -1,0 +1,37 @@
+{% extends 'BrickstormSolidRBundle::layout.html.twig' %}
+
+{% block title %}{{ organization.name }} - {{ 'page.title.project'|trans }}{% endblock %}
+
+
+{% block content %}
+
+{% include 'BrickstormSolidRBundle:Organization:_medias.html.twig' with {'organization': organization} %}
+
+
+<div class="main-col">
+{% include 'BrickstormSolidRBundle:Organization:_header.html.twig' with {'organization': organization, 'map': map} %}
+
+{% if organization.children|length < 1 %}
+<p><a class="btn btn-large btn-primary" href="{{ path('participate', {'id' : organization.id, 'slug' : organization.slug}) }}">{{ 'i.participate'|trans }} &raquo;</a></p>
+{% endif %}
+
+<br/>
+<hr />
+
+<h2>{{ 'organization.projects'|trans }}</h2>
+{% for project in organization.projects %}
+  <ul>
+    <li>
+      <a href="{{ path('project', {'id': project.id, 'slug': project.slug}) }}">{{ project.name }}</a>
+      <br/>
+      {% for area in project.areas %}
+      <span class="label label-info">{{ area }}</span> &nbsp;
+      {% endfor %}
+    </li>
+  </ul>
+
+{% endfor %}
+</div>
+
+
+{% endblock %}
