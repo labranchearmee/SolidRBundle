@@ -39,7 +39,41 @@ class MainController extends Controller
       ));
     }
 
- 
+    /**
+    *
+    */
+    public function areaAction(Request $request)
+    {
+      
+      $em = $this->getDoctrine()->getEntityManager();
+      $a  = $em->getRepository('BrickstormSolidRBundle:Area')
+               ->findOneBySlug($request->get('slug'));
+      //$ps  = $em->getRepository('BrickstormSolidRBundle:Project')
+      //          ->findByCities(array(1));
+      $ps  = $em->getRepository('BrickstormSolidRBundle:Project')
+                ->findBy(array('parent'=>null));
+      
+      return $this->render('BrickstormSolidRBundle:Main:area.html.twig', array(
+        'area' => $a,
+        'projects' => $ps
+      ));
+    }
+
+    /**
+    *
+    */
+    public function searchAction(Request $request)
+    {
+      $q  = $request->get('q');
+      $em = $this->getDoctrine()->getEntityManager();
+      $ps = $em->getRepository('BrickstormSolidRBundle:Project')
+               ->findBy(array('parent'=>null));
+      
+      return $this->render('BrickstormSolidRBundle:Main:search.html.twig', array(
+        'query' => $q,
+        'projects' => $ps
+      ));
+    }
 
     /**
      *

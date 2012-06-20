@@ -388,4 +388,29 @@ class Action
     {
         return $this->updates;
     }
+    /**
+     * @var boolean $is_complete
+     */
+    private $is_complete;
+
+
+    /**
+     * Set is_complete
+     *
+     * @param boolean $isComplete
+     */
+    public function setIsComplete($isComplete)
+    {
+        $this->is_complete = $isComplete;
+    }
+
+    /**
+     * Get is_complete
+     *
+     * @return boolean 
+     */
+    public function getIsComplete()
+    {
+        return $this->is_complete;
+    }
 }

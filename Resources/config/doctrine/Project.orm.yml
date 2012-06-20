@@ -24,6 +24,12 @@ Brickstorm\SolidRBundle\Entity\Project:
     unit_cost:
       nullable: true
       type: float
+    quantity_wanted:
+      nullable: true
+      type: integer
+    quantity_remaining:
+      nullable: true
+      type: integer
     devise:
       type: string
       length: 10

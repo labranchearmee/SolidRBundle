@@ -48,7 +48,18 @@ margin-right: 550px;
 }
 
 #project-children {
-  width:600px;
+  width:580px;
+}
+.description {
+  font-size: 14px;
+  font-weight: 150;
+}
+.short-description {
+  height:40px;
+  text-overflow; ellipsis:
+}
+.medias-small {
+  padding:20px;
 }
 
 footer {
@@ -57,4 +68,7 @@ clear:both;
 
 .inline-block {
 display:inline-block;
+}
+.progress {
+height: 30px;
 }

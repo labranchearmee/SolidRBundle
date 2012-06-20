@@ -19,26 +19,84 @@
 <hr />
 
 <h2>{{ 'project.actions'|trans }}</h2>
+<br/>
+<div class="accordion" id="actions">
 {% for action in project.actions %}
-  <div class="alert alert-info">
-    <strong>{{ 'quantity'|trans }}: {{ action.quantity }}, le {{ action.createdAt|date("d/m/Y") }}</strong>
-    <br/>
-    {{ 'action.updates'|trans }} <span class="badge badge-info">{{ 'action.updates'|length }}</span>
-    <ul>
-    {% for update in action.updates %}
-      <li>
-      {{ update }}
-      {% if update.medias %}
-        <div style="width:400px;">
-        {% include 'BrickstormSolidRBundle:Project:_carousel.html.twig' with {'medias': update.medias, 'id': update.id} %}
-        </div>
+<div class="accordion-group">
+  <div class="accordion-heading">
+      {% if action.updates|length > 0 %}  
+        <a data-toggle="collapse" data-parent="#actions" href="#updates-{{ action.id }}" class="pull-right btn" href="">{{ 'see.updates'|trans({'%count%': action.updates|length }) }}</a>
+      {% else %}
+        <a class="pull-right btn disabled">{{ 'action.wait.for.updates'|trans }}</a>
       {% endif %}
-      </li>
-    {% endfor %}
+      <h6>
+        {{ action.quantity }} {{ action.project.name }} <small>le {{ action.createdAt|date("d/m/Y") }} par {{ action.user }}</small>
+      </h6>
+      <br/>
+  </div>
+  {% if action.updates|length > 0 %}  
+  <div id="updates-{{ action.id }}" class="accordion-body collapse">
+    <ul class="accordion-inner">
+      {% for update in action.updates %}
+        <li>
+        {{ update }}
+        {% if update.medias %}
+          <div style="width:400px;">
+          {% include 'BrickstormSolidRBundle:Project:_carousel.html.twig' with {'medias': update.medias, 'id': update.id} %}
+          </div>
+        {% endif %}
+        </li>
+      {% endfor %}
     </ul>
   </div>
-
+  {% endif %}
+</div>
 {% endfor %}
+</div>
+</div>
+
+
+{#
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>{{ 'action.date'|trans }}</th>
+      <th>{{ 'action.quantity'|trans }}</th>
+      <th>{{ 'action.updates'|trans }}</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for action in project.actions %}
+    <tr>
+      <td>le {{ action.createdAt|date("d/m/Y") }} par {{ action.user }}</td>
+      <td>{{ action.quantity }} {{ action.project.name }}</td>
+      <td><a class="btn" data-collapse="updates-{{ action.id }}" href="#">&raquo; {{ 'see.update'|trans }}</a></td>
+    </tr>
+    <tr id="updates-{{ action.id }}" class="collapse">
+      <td colspan="3">
+        {% if action.updates|length > 0 %}  
+          {{ action.updates|length }} {{ 'updates'|trans }} :
+          <ul>
+          {% for update in action.updates %}
+            <li>
+            {{ update }}
+            {% if update.medias %}
+              <div style="width:400px;">
+              {% include 'BrickstormSolidRBundle:Project:_carousel.html.twig' with {'medias': update.medias, 'id': update.id} %}
+              </div>
+            {% endif %}
+            </li>
+          {% endfor %}
+          </ul>
+        {% else %}
+          {{ 'action.wait.for.updates'|trans }}
+        {% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+#}
 </div>
 
 

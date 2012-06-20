@@ -1,7 +1,7 @@
 <div class="well">
 
 {% for area in project.areas %}
-<span class="label label-info">{{ area }}</span> &nbsp;
+<span class="label label-{{ area.class }}">{{ area }}</span> &nbsp;
 {% endfor %}
 
 <br/>
@@ -20,14 +20,15 @@
 </small></h1>
 {% endif %}
 
-<p>{{ 'by.organization'|trans }} : <a href="{{ path('organization', {'id': project.organization.id, 'slug': project.organization.slug}) }}">{{ project.organization.name }}</a></p>
-
 {% if project.userCost > 0 %}
 <span class="badge badge-inverse"><big>{{ project.userCost }}</big> &nbsp;<i>- &nbsp;{{ project.localCost }}</i></span>
 {% endif %}
 
+<p>{{ 'by.organization'|trans }} : <a href="{{ path('organization', {'id': project.organization.id, 'slug': project.organization.slug}) }}">{{ project.organization.name }}</a></p>
+
+
 <br/>
-<p>{{ project.description }}</p>
+<p class="description">{{ project.description }}</p>
 
 <br/>
 {% if project.children|length %}
@@ -35,7 +36,7 @@
     {% for child in project.children %}
     <tr>
     <td>
-    <h3>{{ child.name }} <span class="badge badge-inverse"><big>{{ child.userCost }}</big> &nbsp;<i>- &nbsp;{{ child.localCost }}</i></span></h3>
+    <h3>{{ child.name }} <span class="badge badge-inverse"><big>{{ child.userCost }} €</big> = {{ child.localCost }}</i></span></h3>
     <p>{{ child.description }}</p>
     </td>
     <td>
@@ -47,3 +48,12 @@
 {% endif %}
 
 </div>
+
+{% if project.quantityWanted > 0 %}
+  <p class="alert">{{ 'project.state'|trans }} : {{ project.achievement/10 }}/{{ project.quantityWanted }}</p>
+  <div class="progress progress-striped">
+    <div class="bar" style="width: {{ project.achievement }}%;"></div>
+  </div>
+{% else %}
+  <p class="alert">{{ 'project.permanent'|trans }}</p>
+{% endif %}

@@ -46,9 +46,42 @@ class Project
     public function convert($devise) {
       switch ($devise) {
         case 'EURO':
-          return round($this->unit_cost * 0.0015, 2);
+          return round($this->unit_cost/656, 2);
         break;
       }
+    }
+
+    public function getAchievement()
+    {
+        return 100 * ($this->quantity_wanted - $this->quantity_remaining) / $this->quantity_wanted;
+    }
+
+    /**
+     * Get quantities
+     */
+    public function getQuantityWanted()
+    {
+        if ($children = $this->getChildren()) {
+          $qtty = 0;
+          foreach($children as $child) {
+            $qtty = $qtty + $child->getQuantityWanted();
+          }
+          return $qtty;
+        } else {
+          return $this->quantity_wanted;
+        }
+    }
+    public function getQuantityRemaining()
+    {
+        if ($children = $this->getChildren()) {
+          $qtty = 0;
+          foreach($children as $child) {
+            $qtty = $qtty + $child->getQuantityRemaining();
+          }
+          return $qtty;
+        } else {
+          return $this->quantity_remaining;
+        }
     }
 
     /**
@@ -143,6 +176,16 @@ class Project
      * @var Brickstorm\SolidRBundle\Entity\Organization
      */
     private $organization;
+
+    /**
+     * @var integer $quantity_wanted
+     */
+    private $quantity_wanted;
+
+    /**
+     * @var integer $quantity_remaining
+     */
+    private $quantity_remaining;
 
     /**
      * Get id
@@ -446,4 +489,24 @@ class Project
         $this->organization = $organization;
     }
 
+
+    /**
+     * Set quantity_wanted
+     *
+     * @param integer $quantityWanted
+     */
+    public function setQuantityWanted($quantityWanted)
+    {
+        $this->quantity_wanted = $quantityWanted;
+    }
+
+    /**
+     * Set quantity_remaining
+     *
+     * @param integer $quantityRemaining
+     */
+    public function setQuantityRemaining($quantityRemaining)
+    {
+        $this->quantity_remaining = $quantityRemaining;
+    }
 }

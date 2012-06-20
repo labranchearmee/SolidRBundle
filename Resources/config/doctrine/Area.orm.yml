@@ -23,6 +23,16 @@ Brickstorm\SolidRBundle\Entity\Area:
       fixed: false
       gedmo:
         - translatable
+        - sluggable
+    slug:
+      type: string
+      length: 128
+      gedmo:
+        slug:
+          separator: -
+          style: default
+          fields:
+            - name
     created_at:
       type: date
       gedmo:

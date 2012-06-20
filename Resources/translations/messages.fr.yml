@@ -35,26 +35,39 @@ page:
         project: Projet
 current.projects: Projets en cours
 location: Lieu
-see:
-    childrens: Actions du projet
-    project: Voir le projet
 i:
   participate: Je participe
   participate.pitch: Quelque soit le rythme que vous choisissez, l'Amndrc vous tient au courant mensuellement de l'avancée du projet ; compte-rendu, photos
 see:
+    childrens: Actions du projet
+    project: Soutenir le projet
     details: Voir les détails
-    project: Voir le projet
+    update: Voir le retour
+    updates: Voir les %count% retours
 project:
-  actions: Les actions en cours
+  actions: Les actions réalisées
   details: Le projet en détails
   created.by: Projet réalisé par
-action.updates: Les retours
+  state: Avancement du project
+  permanent: Ce besoin est permanent. Vous pouvez soutenir le projet dans une quantité que vous déterminez. Privilégiez une action dans la durée avec des paiments réguliers.
+by.organization: Porté par
+action:
+    quantity: Qtté
+    updates: Retours
+    date: Date de lancement
+    wait.for.updates: En cours de réalisation
 send: Envoyer
 send.money: Envoyer l'argent
 
+search:
+  placeholder: Rechercher parmi les projets
+  nb_results: projets trouvés
+
 home.intro:
-    service: L'Amndrc vous permet de découvrir des actions concrètes pour lesquelles les habitants ont besoin de soutien financier. Ce site de l'Amndrc vous permet aider directement à les réaliser, en choisissant quelle action vous intéresse. Pour chaque action financée, nous nous engageons à vous faire un retour rapide (sous un mois environ) avec un compte-rendu de l'action et  si possible des photos associées.
-    subscribe: Vous pouvez choisir de soutenir une action dans la durée en choississant un prélèvement régulier. Vous serez alors tenu au courant régulièrement des avancées et des actions réalisées dur place. 
+    title: L'aide par l'action concrète 
+    service: Solid'R vous permet de découvrir des actions concrètes, proposées par des ONG sur place et pour lesquelles les habitants ont besoin de soutien financier. Agissez concrètement et régulièrement, en choisissant quelles actions vous intéressent. Pour chaque action financée, l'ONG porteuse du projet vous fera un retour rapide (sous un mois environ) avec un compte-rendu de l'action et si possible des photos associées.
+    subscribe: Vous pouvez choisir de soutenir une action dans la durée en choississant un prélèvement régulier. Vous serez alors tenu au courant régulièrement des avancées et des actions réalisées dur place.
+    launch: Pour découvrir les projets, choissisez le domaine qui intéresse 
 
 warning.fee:
     pitch: Le coût de réalisation sur place de votre action est de %amount% €. Ce montant ne comprend pas les coûts de collecte et d'envoi de l'argent.

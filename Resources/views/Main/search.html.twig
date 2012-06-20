@@ -1,0 +1,41 @@
+{% extends 'BrickstormSolidRBundle::layout.html.twig' %}
+
+{% block title %}{{ 'service.name'|trans }} - {{ 'page.title.search'|trans }}{% endblock %}
+
+
+{% block content %}
+
+<h1>Recherche <small>{{ query }}</small></h1>
+<p>{{ projects|length }} {{ 'search.nb_results'|trans }}</p>
+<br/>
+<table class="table table-striped table-bordered">
+{% for project in projects %}
+<tr>
+<td>
+  {% for area in project.areas %}
+  <span class="label label-{{ area.class }}">{{ area }}</span> &nbsp;
+  {% endfor %}
+  <div class="medias-small pull-right">
+    {% for media in project.medias %}
+    {% thumbnail media, 'small' %}
+    {% endfor %}
+  </div>
+  <h3>{{ project.name }} 
+    <small>
+    {% for city in project.cities %}
+    {{ city }} ({{ city.province.country }}, {{ city.province.country.continent }}) 
+    {% endfor %}
+    </small>
+  </h3>
+  <p class="short-description">
+    {{ 'project.created.by'|trans }} {{ project.creator }} (<a href="{{ path('organization', {'id' : project.organization.id, 'slug' : project.organization.slug}) }}">{{ project.organization }}</a>)
+    <br/>
+    {{ project.description }}
+  </p>
+  <a class="btn btn-large" href="{{ path('project', {'id' : project.id, 'slug' : project.slug}) }}">{{ 'see.project'|trans }} &raquo;</a>
+</td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

@@ -1,6 +1,16 @@
 homepage:
     pattern:  /
     defaults: { _controller: BrickstormSolidRBundle:Main:home }
+search:
+    pattern:  /{_locale}/search
+    defaults: { _controller: BrickstormSolidRBundle:Main:search }
+    requirements:
+        slug: agriculture|construction|sante|social|education|all
+homepage_area:
+    pattern:  /{_locale}/{slug}
+    defaults: { _controller: BrickstormSolidRBundle:Main:area }
+    requirements:
+        slug: agriculture|construction|sante|social|education|all
 cgvu:
     pattern:  /
     defaults: { _controller: BrickstormSolidRBundle:Main:cgvu }

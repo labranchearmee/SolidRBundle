@@ -1,7 +1,11 @@
 <div class="pull-right">
   {% if project.medias %}
     <div class="carousel-container">
-    {% include 'BrickstormSolidRBundle:Project:_carousel.html.twig' with {'medias': project.medias, 'id': project.id} %}
+    {% if project.medias|length > 0 %}
+      {% include 'BrickstormSolidRBundle:Project:_carousel.html.twig' with {'medias': project.medias, 'id': project.id} %}
+    {% elseif project.parent %}
+      {% include 'BrickstormSolidRBundle:Project:_carousel.html.twig' with {'medias': project.parent.medias, 'id': project.id} %}
+    {% endif%}
     </div>
   {% endif %}
   <br/>
