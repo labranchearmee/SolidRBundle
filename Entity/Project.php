@@ -32,15 +32,15 @@ class Project
 
     
     public function userFees() {
-      return $this->userCost() * 0.1;
+      return round($this->userCost() * 0.1, 2);
     }
     
     public function userCost() {
-      return $this->convert('EURO');
+      return round($this->convert('EURO'),2);
     }
     
     public function userTotalCost() {
-      return $this->userCost() + $this->userFees();
+      return round($this->userCost() + $this->userFees(), 2);
     }
 
     public function convert($devise) {

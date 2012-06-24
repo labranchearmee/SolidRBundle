@@ -21,8 +21,26 @@ use Brickstorm\SolidRBundle\Entity\Action;
 /**
  * @Route("/payments")
  */
-class PaymentController //extends BaseController
+class PaymentController extends Controller //extends BaseController
 {
+    /**
+     *
+     */
+    public function paypalAction(Request $request)
+    {
+      //print_r($_REQUEST);exit();
+      if ($request->get('auth')) {
+        return $this->render('BrickstormSolidRBundle:Payment:paypal.html.twig', array(
+          'success' => true
+        ));
+      
+      } else {
+        return $this->render('BrickstormSolidRBundle:Payment:paypal.html.twig', array(
+          'success' => false
+        ));
+      }
+    }
+
     /**
      *
      */

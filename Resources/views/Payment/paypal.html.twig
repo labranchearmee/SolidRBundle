@@ -1,0 +1,17 @@
+{% extends 'BrickstormSolidRBundle::layout.html.twig' %}
+
+{% block title %}{{ 'service.name'|trans }} - {{ 'page.title.paypal'|trans }}{% endblock %}
+
+
+{% block content %}
+
+<h1>{{ 'paypal.return.title'|trans }}</h1>
+<br/>
+
+{% if success %}
+<p class="alert alert-success">{{ 'paypal.return.success'|trans }}</p>
+{% else %}
+<p class="alert alert-error">{{ 'paypal.return.failure'|trans }}</p>
+{% endif %}
+
+{% endblock %}

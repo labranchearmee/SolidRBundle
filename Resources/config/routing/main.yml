@@ -27,12 +27,12 @@ payment_modal:
     defaults: { _controller: BrickstormSolidRBundle:Main:modal }
     requirements:
         id: \d+
-payment_complete:
-    pattern:  /{_locale}/participate-success
-    defaults: { _controller: BrickstormSolidRBundle:Payment:success }
-payment_cancel:
-    pattern:  /{_locale}/participate-cancel
-    defaults: { _controller: BrickstormSolidRBundle:Payment:cancel }
+paypal_success:
+    pattern:  /{_locale}/paypal/success
+    defaults: { _controller: BrickstormSolidRBundle:Payment:paypal, success: 1 }
+paypal_cancel:
+    pattern:  /{_locale}/paypal/cancel
+    defaults: { _controller: BrickstormSolidRBundle:Payment:paypal }
 participate:
     pattern:  /{_locale}/project/{id}-{slug}/participate
     defaults: { _controller: BrickstormSolidRBundle:Project:participate }

@@ -1,6 +1,7 @@
-<p class="alert">
+<h6>{{ 'warning.reccurrent'|trans({'%quantity%': action.quantity, '%project%': project, '%reccurrent%': action.reccurrent|trans }) }}</h6>
+<br/>
+<p class="alert alert-info">
   {{ 'warning.fee.pitch'|trans({'%amount%': project.userCost}) }}
-  <br/>
   <br/>
   {{ 'warning.fee.amount'|trans({'%fees%': project.userFees}) }}
   <br/>
@@ -9,19 +10,25 @@
 </p>
 
 <ul class="nav nav-tabs">
-  <li><a class="active" href="#paypal" data-toggle="tab">{{ 'choose.paypal'|trans }}</a></li>
+  <li class="active"><a href="#paypal" data-toggle="tab">{{ 'choose.paypal'|trans }}</a></li>
   <li><a href="#check" data-toggle="tab">{{ 'choose.check'|trans }}</a></li>
 </ul>
 
 <div class="tab-content">    
   <div class="tab-pane" id="check">
   {{ 'check.infos.pitch'|trans }}
+  <br/>
+  <pre class="prettyprint linenums">
+  AMNDRC - Bergstörm
+  214 avenue du Maine
+  75014 Paris
+  </pre>
   </div>
-  <div class="tab-pane" id="paypal">
-    <form target="paypal" class="actions" action="https://www.paypal.com/fr/cgi-bin/webscr" method="post">
+  <div class="tab-pane active" id="paypal">
+    {{ 'paypal.infos.pitch'|trans }}
+    <form target="paypal" class="actions" action="{% if app.environment == 'dev' %}{{ 'service.dev.paypal.url' }}{% else %}{{ 'service.prod.paypal.url' }}{% endif %}" method="post">
 
-
-      {# buyers infos #}
+      {# buyers infos 
       <table> 
         <tr><th>{{ 'form.paypal.firstname'|trans }}</th><td><input type="text" name="first_name" value=""></td></tr>  
         <tr><th>{{ 'form.paypal.lastname'|trans }}</th><td><input type="text" name="last_name" value=""></td></tr>
@@ -32,29 +39,29 @@
         <tr><th>{{ 'form.paypal.zip'|trans }}</th><td><input type="text" name="zip" value=""></td></tr>
         <tr><th>{{ 'form.paypal.state'|trans }}</th><td><input type="text" name="state" value="FR"></td></tr>
         <tr><th>{{ 'form.paypal.email'|trans }}</th><td><input type="text" name="email" value=""></td></tr>
-      </table> 
+      </table>#}
 
-      {% if recurrent %}
+      {% if action.reccurrent %}
         <!-- Specify a reccuring payment --> 
         <input type="hidden" name="cmd" value="_xclick-subscriptions"> 
         <!-- Set the terms of the regular subscription. --> 
         <input type="hidden" name="a3" value="{{ project.userTotalCost }}"> 
         <input type="hidden" name="p3" value="1"> 
-        <input type="hidden" name="t3" value="{{ recurrent }}">
+        <input type="hidden" name="t3" value="{{ action.reccurrent }}">
         <!-- Set recurring payments until canceled. --> 
         <input type="hidden" name="src" value="1">
       
       {% else %}
         <!-- Specify a payment --> 
-        <input type="hidden" name="cmd" value="_donations">
+        <input type="hidden" name="cmd" value="_xclick">
         <input type="hidden" name="amount" value="{{ project.userTotalCost }}">
       {% endif %}
     
       <!--<input type="hidden" name="undefined_quantity" value="1">-->
-      <input type="hidden" name="quantity" value="{{ recurrent }}">
+      <input type="hidden" name="quantity" value="{{ action.reccurrent }}">
       <input type="hidden" name="currency_code" value="EUR"> 
       <!-- pour spécifier un bouton Acheter maintenant, utilisez la commande _xclick -->
-      <input type="hidden" name="business" value="bbergstorm@gmail.com">
+      <input type="hidden" name="business" value="{% if app.environment == 'dev' %}{{ 'service.dev.paypal.account' }}{% else %}{{ 'account' }}{% endif %}">
       <!-- Permet au client de saisir la quantité souhaitée -->
       <input type="hidden" name="item_name" value="{{ project.name }}">
       <input type="hidden" name="item_number" value="{{ project.id }}">
@@ -62,16 +69,15 @@
       donc le montant est supposé être en USD -->
       <! Variables de transit pour le suivi des commandes, par exemple -->
       <input type="hidden" name="custom" value="merchant_custom_value">
-      <input type="hidden" name="invoice" value="AMNDRC-F-{{ project.id }}">
+      <input type="hidden" name="invoice" value="SOLIDR-AMNDRC-{{ project.id }}-{{ 'now'|date('Ymdhi') }}">
       <input type="hidden" name="charset" value="utf-8">
-      <input type="hidden" name="no_shipping" value="1">
       <input type="hidden" name="image_url" value="https://www.amndrc.org/logo.gif">
-      <input type="hidden" name="return" value="http://www.amndrc.org/thankyou.htm">
-      <input type="hidden" name="cancel_return" value="http://www.amndrc.org/cancel.htm">
+      <input type="hidden" name="return" value="{% if app.environment == 'dev' %}{{ 'service.dev.paypal.return.url' }}{% else %}{{ 'service.prod.paypal.return.url' }}{% endif %}{{ path('paypal_success') }}">
+      <input type="hidden" name="cancel_return" value="{% if app.environment == 'dev' %}{{ 'service.dev.paypal.return.url' }}{% else %}{{ 'service.prod.paypal.return.url' }}{% endif %}{{ path('paypal_cancel') }}">
       <!-- N’invite pas le client à ajouter une remarque à son achat -->
       <input type="hidden" name="no_note" value="1">
-      <!--<input type="image" src="http://images.paypal.com/images/x-click-but01.gif" name="submit" alt="{{ 'paypal.button'|trans }}">-->
+      <input type="hidden" name="no_shipping" value="1">
     </form>
-    <a href="#" class="btn btn-large btn-primary">{{ 'launch.paypal'|trans }}</a>
+    <a href="#" class="btn btn-large btn-primary">{{ 'paypal.launch'|trans }} &raquo;</a>
   </div>
 </diV>

@@ -32,15 +32,15 @@ class Project
 
     
     public function userFees() {
-      return $this->userCost() * 0.1;
+      return round($this->userCost() * 0.1, 2);
     }
     
     public function userCost() {
-      return $this->convert('EURO');
+      return round($this->convert('EURO'),2);
     }
     
     public function userTotalCost() {
-      return $this->userCost() + $this->userFees();
+      return round($this->userCost() + $this->userFees(), 2);
     }
 
     public function convert($devise) {
@@ -49,6 +49,39 @@ class Project
           return round($this->unit_cost/656, 2);
         break;
       }
+    }
+
+    public function getAchievement()
+    {
+        return 100 * ($this->quantity_wanted - $this->quantity_remaining) / $this->quantity_wanted;
+    }
+
+    /**
+     * Get quantities
+     */
+    public function getQuantityWanted()
+    {
+        if ($children = $this->getChildren()) {
+          $qtty = 0;
+          foreach($children as $child) {
+            $qtty = $qtty + $child->getQuantityWanted();
+          }
+          return $qtty;
+        } else {
+          return $this->quantity_wanted;
+        }
+    }
+    public function getQuantityRemaining()
+    {
+        if ($children = $this->getChildren()) {
+          $qtty = 0;
+          foreach($children as $child) {
+            $qtty = $qtty + $child->getQuantityRemaining();
+          }
+          return $qtty;
+        } else {
+          return $this->quantity_remaining;
+        }
     }
 
     /**
@@ -468,16 +501,6 @@ class Project
     }
 
     /**
-     * Get quantity_wanted
-     *
-     * @return integer 
-     */
-    public function getQuantityWanted()
-    {
-        return $this->quantity_wanted;
-    }
-
-    /**
      * Set quantity_remaining
      *
      * @param integer $quantityRemaining
@@ -485,15 +508,5 @@ class Project
     public function setQuantityRemaining($quantityRemaining)
     {
         $this->quantity_remaining = $quantityRemaining;
-    }
-
-    /**
-     * Get quantity_remaining
-     *
-     * @return integer 
-     */
-    public function getQuantityRemaining()
-    {
-        return $this->quantity_remaining;
     }
 }

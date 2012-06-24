@@ -21,16 +21,21 @@
   </p>
 </div>
 
-<h2>{{ 'one.project'|trans }}</h2>
 
+<h2>{{ 'i.participate'|trans }} <small>{{ 'teaser.project.title'|trans }}</small></h2>
+<br/>
+{% for project in samples %}
+<div class="btn-group">
+<a class="btn" href="{{ path('project', {id: project.id, slug: project.slug}) }}">{{ 'teaser.project.pitch'|trans({'%title%': project.name, '%cost%': project.userCost}) }}</a>
+<a class="btn btn-primary" href="{{ path('project', {id: project.id, slug: project.slug}) }}">{{ 'i.participate'|trans }} &raquo;</a>
+</div>
+<br/>
+{% endfor %}
 
+<br/>
 <hr/>
 
-<h2>{{ 'teaser.project'|trans }}</h2>
-Je finance 1 pupitre par an pour 35 €
 
-Je finance 10 cahiers chaque mois pour 4€
 
-Je finance 1 hectare de manioc pour 150 €
 
 {% endblock %}

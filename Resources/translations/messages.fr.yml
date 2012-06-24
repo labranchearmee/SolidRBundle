@@ -1,20 +1,42 @@
 service:
     description: agissez avec l'Amndrc !
+    dev:
+        paypal:
+          url: https://www.sandbox.paypal.com/fr/cgi-bin/webscr
+          return.url: http://solidr.brickstorm.dev
+          account: benoit_1340539113_biz@yahoo.fr
+    prod:
+        paypal:
+          url: https://www.paypal.com/fr/cgi-bin/webscr
+          return.url: http://www.solidr.org
+          account: bbergstorm@gmail.com
 choose:
     quantity: Combien ?
     occurrence: A quel rythme ?
     paypal: Payer avec PayPal
     check: Paiement par chèque
+check.infos.pitch: Envoyez votre chèque à l'adresse indiquée ci-dessous, ainsi que votre téléphone et/ou votre email. Nous vous tiendrons au courant de la réception de votre chèque, de son encaissement et de l'avancée de l'action que vous soutenez.
+warning:
+    fee:
+        pitch: Le coût de réalisation sur place de votre action est de %amount% €. Ce montant ne comprend pas les coûts de collecte et d'envoi de l'argent.
+        amount: Ces charges s'élèvent à %fees% €. 
+        total: Vous allez donc payer %total% €, montant sur lequel %amount% € ira directement à la réalisation de l'action que vous avez choisi de soutenir.
+    reccurrent: Vous avez choisi de soutenir %quantity% %project% %reccurrent%
+paypal:
+    launch: Ouvrir Paypal
+    infos.pitch: Vous allez être redirigé vers Paypal pour effectuer votre paiement.
+    return:
+        title: Votre payment avec Paypal
+        success: Votre payment a été accepté, merci pour votre soutien ! Nous allons procéder au lancement de l'action sur place et à l'actualisation du site Solid'R dès que possible. Nous reviendrons vers vous pour vous tenir au courant du calendrier mis en place. 
+        failure: Votre payment avec Paypal
 i.participate: 'Je participe'
-participate:
-    oneshot: 'une fois'
-    daily: 'quotidiennement'
-    weekly: 'chaque semaine'
-    monthly: 'tous les mois'
-    yearly: 'une fois par an'
+once: 'une fois'
+D: quotidiennement
+W: chaque semaine
+M: tous les mois
+Y: une fois par an
 quantity: Quantité
 cost: Coût
-
 amndrc:
     description: Je sais à qui et pour quoi je donne !
     name: Solid'R
@@ -68,8 +90,7 @@ home.intro:
     service: Solid'R vous permet de découvrir des actions concrètes, proposées par des ONG sur place et pour lesquelles les habitants ont besoin de soutien financier. Agissez concrètement et régulièrement, en choisissant quelles actions vous intéressent. Pour chaque action financée, l'ONG porteuse du projet vous fera un retour rapide (sous un mois environ) avec un compte-rendu de l'action et si possible des photos associées.
     subscribe: Vous pouvez choisir de soutenir une action dans la durée en choississant un prélèvement régulier. Vous serez alors tenu au courant régulièrement des avancées et des actions réalisées dur place.
     launch: Pour découvrir les projets, choissisez le domaine qui intéresse 
-
-warning.fee:
-    pitch: Le coût de réalisation sur place de votre action est de %amount% €. Ce montant ne comprend pas les coûts de collecte et d'envoi de l'argent.
-    amount: Ces charges s'élèvent à %fees% €. 
-    total: Vous allez donc payer %total% €, montant sur lequel %amount% € ira directement à la réalisation de l'action que vous avez choisi de soutenir.
+one.project: Un projet au hazard
+teaser.project:
+    title: Exemples d'actions que vous pouvez facilement financer
+    pitch: Je finance %title% chaque mois pour %cost% €

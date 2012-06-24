@@ -19,6 +19,9 @@ use Ivory\GoogleMapBundle\Model\Overlays\Animation;
 
 use Brickstorm\SolidRBundle\Entity\Project;
 use Brickstorm\SolidRBundle\Entity\Organization;
+use Brickstorm\SolidRBundle\Entity\Action;
+
+use Brickstorm\SolidRBundle\Manager\ProjectManager;
 
 class MainController extends Controller
 {
@@ -31,11 +34,11 @@ class MainController extends Controller
       $em = $this->getDoctrine()->getEntityManager();
       //$ps  = $em->getRepository('BrickstormSolidRBundle:Project')
       //          ->findByCities(array(1));
-      $ps  = $em->getRepository('BrickstormSolidRBundle:Project')
-                ->findBy(array('parent'=>null));
+      $samples  = $em->getRepository('BrickstormSolidRBundle:Project')
+                  ->findBy(array('id'=> array(2,12,22)));
       
       return $this->render('BrickstormSolidRBundle:Main:home.html.twig', array(
-        'projects' => $ps
+        'samples' => $samples
       ));
     }
 
@@ -65,10 +68,10 @@ class MainController extends Controller
     public function searchAction(Request $request)
     {
       $q  = $request->get('q');
-      $em = $this->getDoctrine()->getEntityManager();
-      $ps = $em->getRepository('BrickstormSolidRBundle:Project')
-               ->findBy(array('parent'=>null));
-      
+
+      $pm = new ProjectManager($this->getDoctrine()->getEntityManager());
+      $ps = $pm->search($q);
+
       return $this->render('BrickstormSolidRBundle:Main:search.html.twig', array(
         'query' => $q,
         'projects' => $ps
@@ -83,11 +86,15 @@ class MainController extends Controller
       $em = $this->getDoctrine()->getEntityManager();
       $p  = $em->getRepository('BrickstormSolidRBundle:Project')
                ->findOneById($request->get('id'));
-      
+
+      $a = new Action;
+      $a->setProject($p);
+      $a->setQuantity($request->get('quantity'));
+      $a->setReccurrent($request->get('recurrent'));
+
       return $this->render('BrickstormSolidRBundle:Payment:_modal.html.twig', array(
-        'project'   => $p,
-        'recurrent' => $request->get('recurrent'),
-        'quantity'  => $request->get('quantity'),
+        'project' => $p,
+        'action' => $a,
       ));
     }
 }

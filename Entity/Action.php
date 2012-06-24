@@ -40,6 +40,51 @@ class Action
      */
     private $user;
 
+    /**
+     * @var float $quantity
+     */
+    private $quantity;
+
+    /**
+     * @var string $reccurrent
+     */
+    private $reccurrent;
+
+    /**
+     * @var boolean $is_public
+     */
+    private $is_public;
+
+    /**
+     * @var string $orderNumber
+     */
+    private $orderNumber;
+
+    /**
+     * @var decimal $amount
+     */
+    private $amount;
+
+    /**
+     * @var Brickstorm\SolidRBundle\Entity\Project
+     */
+    private $project;
+
+    /**
+     * @var JMS\Payment\CoreBundle\Entity\PaymentInstruction
+     */
+    private $paymentInstruction;
+
+    /**
+     * @var Brickstorm\SolidRBundle\Entity\Update
+     */
+    private $updates;
+
+    /**
+     * @var boolean $is_complete
+     */
+    private $is_complete;
+
 
     /**
      * Get id
@@ -110,55 +155,6 @@ class Action
     {
         return $this->user;
     }
-    /**
-     * @var float $quantity
-     */
-    private $quantity;
-
-    /**
-     * @var boolean $is_daily
-     */
-    private $is_daily;
-
-    /**
-     * @var boolean $is_weekly
-     */
-    private $is_weekly;
-
-    /**
-     * @var boolean $is_monthly
-     */
-    private $is_monthly;
-
-    /**
-     * @var boolean $is_yearly
-     */
-    private $is_yearly;
-
-    /**
-     * @var boolean $is_public
-     */
-    private $is_public;
-
-    /**
-     * @var string $orderNumber
-     */
-    private $orderNumber;
-
-    /**
-     * @var decimal $amount
-     */
-    private $amount;
-
-    /**
-     * @var Brickstorm\SolidRBundle\Entity\Project
-     */
-    private $project;
-
-    /**
-     * @var JMS\Payment\CoreBundle\Entity\PaymentInstruction
-     */
-    private $paymentInstruction;
 
     /**
      * Set quantity
@@ -178,86 +174,6 @@ class Action
     public function getQuantity()
     {
         return $this->quantity;
-    }
-
-    /**
-     * Set is_daily
-     *
-     * @param boolean $isDaily
-     */
-    public function setIsDaily($isDaily)
-    {
-        $this->is_daily = $isDaily;
-    }
-
-    /**
-     * Get is_daily
-     *
-     * @return boolean 
-     */
-    public function getIsDaily()
-    {
-        return $this->is_daily;
-    }
-
-    /**
-     * Set is_weekly
-     *
-     * @param boolean $isWeekly
-     */
-    public function setIsWeekly($isWeekly)
-    {
-        $this->is_weekly = $isWeekly;
-    }
-
-    /**
-     * Get is_weekly
-     *
-     * @return boolean 
-     */
-    public function getIsWeekly()
-    {
-        return $this->is_weekly;
-    }
-
-    /**
-     * Set is_monthly
-     *
-     * @param boolean $isMonthly
-     */
-    public function setIsMonthly($isMonthly)
-    {
-        $this->is_monthly = $isMonthly;
-    }
-
-    /**
-     * Get is_monthly
-     *
-     * @return boolean 
-     */
-    public function getIsMonthly()
-    {
-        return $this->is_monthly;
-    }
-
-    /**
-     * Set is_yearly
-     *
-     * @param boolean $isYearly
-     */
-    public function setIsYearly($isYearly)
-    {
-        $this->is_yearly = $isYearly;
-    }
-
-    /**
-     * Get is_yearly
-     *
-     * @return boolean 
-     */
-    public function getIsYearly()
-    {
-        return $this->is_yearly;
     }
 
     /**
@@ -359,10 +275,6 @@ class Action
     {
         return $this->paymentInstruction;
     }
-    /**
-     * @var Brickstorm\SolidRBundle\Entity\Update
-     */
-    private $updates;
 
     public function __construct()
     {
@@ -388,11 +300,6 @@ class Action
     {
         return $this->updates;
     }
-    /**
-     * @var boolean $is_complete
-     */
-    private $is_complete;
-
 
     /**
      * Set is_complete
@@ -412,5 +319,25 @@ class Action
     public function getIsComplete()
     {
         return $this->is_complete;
+    }
+
+    /**
+     * Set reccurrent
+     *
+     * @param string $reccurrent
+     */
+    public function setReccurrent($reccurrent)
+    {
+        $this->reccurrent = $reccurrent;
+    }
+
+    /**
+     * Get reccurrent
+     *
+     * @return string 
+     */
+    public function getReccurrent()
+    {
+        return $this->reccurrent;
     }
 }

@@ -12,18 +12,10 @@ Brickstorm\SolidRBundle\Entity\Action:
         strategy: IDENTITY
     quantity:
       type: float
-    is_daily:
+    reccurrent:
       nullable: true
-      type: boolean
-    is_weekly:
-      nullable: true
-      type: boolean
-    is_monthly:
-      nullable: true
-      type: boolean
-    is_yearly:
-      nullable: true
-      type: boolean
+      length: 1
+      type: string
     is_public:
       nullable: true
       default: false
