@@ -1,0 +1,15 @@
+{% extends 'BrickstormSms4FoodBundle::layout.html.twig' %}
+
+{% block title %}{{ 'service.name'|trans }} - {{ 'page.title.cgvu'|trans }}{% endblock %}
+
+{% block content %}
+
+<h1>{{ 'cgvu.title'|trans }} <small>{{ 'cgvu.small'|trans }}</small></h1>
+
+<div class="well">
+<textarea style="width: 100%;height: 400px;">
+{% include 'BrickstormSms4FoodBundle:Main:_cgvu.html.twig' %}
+</textarea>
+</div>
+
+{% endblock %}

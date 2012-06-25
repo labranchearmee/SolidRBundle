@@ -12,10 +12,10 @@ homepage_area:
     requirements:
         slug: agriculture|construction|sante|social|education|all
 cgvu:
-    pattern:  /
+    pattern:  /{_locale}/cgvu
     defaults: { _controller: BrickstormSolidRBundle:Main:cgvu }
 contact_us:
-    pattern:  /
+    pattern:  /{_locale}/contact-us
     defaults: { _controller: BrickstormSolidRBundle:Main:contactus }
 api_intro:
     pattern:  /

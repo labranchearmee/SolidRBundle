@@ -30,11 +30,29 @@ class PaymentController extends Controller //extends BaseController
     {
       //print_r($_REQUEST);exit();
       if ($request->get('auth')) {
+        
+        //mail
+        $message = \Swift_Message::newInstance()
+                ->setSubject($this->get('translator')->trans('email.payment.success.title'))
+                ->setFrom($this->get('translator')->trans('service.email'))
+                ->setTo($values['email'])
+                ->setBody($this->get('translator')->trans('email.payment.success.body'));
+          $this->get('mailer')->send($message);
+        
         return $this->render('BrickstormSolidRBundle:Payment:paypal.html.twig', array(
           'success' => true
         ));
       
       } else {
+
+        //mail
+        $message = \Swift_Message::newInstance()
+                ->setSubject($this->get('translator')->trans('email.payment.failure.title'))
+                ->setFrom($this->get('translator')->trans('service.email'))
+                ->setTo($values['email'])
+                ->setBody($this->get('translator')->trans('email.payment.failure.body'));
+          $this->get('mailer')->send($message);
+
         return $this->render('BrickstormSolidRBundle:Payment:paypal.html.twig', array(
           'success' => false
         ));

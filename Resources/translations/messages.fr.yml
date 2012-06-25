@@ -10,6 +10,9 @@ service:
           url: https://www.paypal.com/fr/cgi-bin/webscr
           return.url: http://www.solidr.org
           account: bbergstorm@gmail.com
+cgvu:
+    title: Consitions générales d'utilisation
+    small: Solid'R
 choose:
     quantity: Combien ?
     occurrence: A quel rythme ?

@@ -23,6 +23,14 @@ use Brickstorm\SolidRBundle\Entity\Action;
 
 use Brickstorm\SolidRBundle\Manager\ProjectManager;
 
+use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\MinLength;
+use Symfony\Component\Validator\Constraints\MaxLength;
+use Symfony\Component\Validator\Constraints\Regex;
+use Symfony\Component\Validator\Constraints\Min;
+use Symfony\Component\Validator\Constraints\Max;
+use Symfony\Component\Validator\Constraints\Collection;
+
 class MainController extends Controller
 {
     /**
@@ -95,6 +103,60 @@ class MainController extends Controller
       return $this->render('BrickstormSolidRBundle:Payment:_modal.html.twig', array(
         'project' => $p,
         'action' => $a,
+      ));
+    }
+
+    public function cgvuAction(Request $request)
+    {
+      return $this->render('BrickstormSolidRBundle:Main:cgvu.html.twig');
+    }
+
+    public function contactUsAction(Request $request)
+    {
+
+      //form validation
+      $collectionConstraint = new Collection(array(
+          'email'       => new Email,
+          'phonenumber' => array(new Min(33100000001), new Max(33999999998)),
+          'subject'     => new MinLength(3),
+          'message'     => array(new MinLength(10), new Regex('/((.*) (.*))+/'),),
+      ));
+      //form
+      $form = $this->createFormBuilder(null, array('validation_constraint' => $collectionConstraint))
+                   ->add('email', 
+                         'email', 
+                         array('required' => true))
+                   ->add('phonenumber', 
+                         'text', 
+                         array('required' => false, 
+                               'attr' => array('placeholder' => $this->get('translator')->trans('form.placeholder.phonenumber')),
+                                               'max_length'  => 11))
+                   ->add('subject', 
+                         'text', 
+                         array('required'  => true))
+                   ->add('message', 
+                         'textarea', 
+                         array('required'  => true))
+                   ->getForm();
+
+      if ($request->getMethod() == 'POST') {
+        $form->bindRequest($request);
+        if ($form->isValid()) {
+         $values = $form->getData();
+         $message = \Swift_Message::newInstance()
+                ->setSubject('[SolidR][ContactUs] '.$values['email'])
+                ->setFrom($values['email'])
+                ->setTo('contact@amndrc.org')
+                ->setBody(print_r($values, true));
+          $this->get('mailer')->send($message);
+          
+          $this->get('session')->setFlash('success', $this->get('translator')->trans('notice.contact.us'));
+          return $this->redirect($this->get('router')->generate('homepage'));
+        }
+      }
+
+      return $this->render('BrickstormSolidRBundle:Main:contactUs.html.twig', array(
+        'form' => $form->createView(),
       ));
     }
 }

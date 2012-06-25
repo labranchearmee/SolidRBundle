@@ -26,7 +26,7 @@
   </div>
   <div class="tab-pane active" id="paypal">
     {{ 'paypal.infos.pitch'|trans }}
-    <form target="paypal" class="actions" action="{% if app.environment == 'dev' %}{{ 'service.dev.paypal.url' }}{% else %}{{ 'service.prod.paypal.url' }}{% endif %}" method="post">
+    <form target="paypal" class="actions" action="{% if app.environment == 'dev' %}{{ 'service.dev.paypal.url'|trans }}{% else %}{{ 'service.prod.paypal.url'|trans }}{% endif %}" method="post">
 
       {# buyers infos 
       <table> 
@@ -61,7 +61,7 @@
       <input type="hidden" name="quantity" value="{{ action.reccurrent }}">
       <input type="hidden" name="currency_code" value="EUR"> 
       <!-- pour spécifier un bouton Acheter maintenant, utilisez la commande _xclick -->
-      <input type="hidden" name="business" value="{% if app.environment == 'dev' %}{{ 'service.dev.paypal.account' }}{% else %}{{ 'account' }}{% endif %}">
+      <input type="hidden" name="business" value="{% if app.environment == 'dev' %}{{ 'service.dev.paypal.account'|trans }}{% else %}{{ 'service.prod.paypal.account'|trans }}{% endif %}">
       <!-- Permet au client de saisir la quantité souhaitée -->
       <input type="hidden" name="item_name" value="{{ project.name }}">
       <input type="hidden" name="item_number" value="{{ project.id }}">
@@ -72,8 +72,8 @@
       <input type="hidden" name="invoice" value="SOLIDR-AMNDRC-{{ project.id }}-{{ 'now'|date('Ymdhi') }}">
       <input type="hidden" name="charset" value="utf-8">
       <input type="hidden" name="image_url" value="https://www.amndrc.org/logo.gif">
-      <input type="hidden" name="return" value="{% if app.environment == 'dev' %}{{ 'service.dev.paypal.return.url' }}{% else %}{{ 'service.prod.paypal.return.url' }}{% endif %}{{ path('paypal_success') }}">
-      <input type="hidden" name="cancel_return" value="{% if app.environment == 'dev' %}{{ 'service.dev.paypal.return.url' }}{% else %}{{ 'service.prod.paypal.return.url' }}{% endif %}{{ path('paypal_cancel') }}">
+      <input type="hidden" name="return" value="{% if app.environment == 'dev' %}{{ 'service.dev.paypal.return.url'|trans }}{% else %}{{ 'service.prod.paypal.return.url'|trans }}{% endif %}{{ path('paypal_success') }}">
+      <input type="hidden" name="cancel_return" value="{% if app.environment == 'dev' %}{{ 'service.dev.paypal.return.url'|trans }}{% else %}{{ 'service.prod.paypal.return.url'|trans }}{% endif %}{{ path('paypal_cancel') }}">
       <!-- N’invite pas le client à ajouter une remarque à son achat -->
       <input type="hidden" name="no_note" value="1">
       <input type="hidden" name="no_shipping" value="1">
