@@ -24,6 +24,7 @@
 
 <h2>{{ 'i.participate'|trans }} <small>{{ 'teaser.project.title'|trans }}</small></h2>
 <br/>
+<div id="samples">
 {% for project in samples %}
 <div class="btn-group">
 <a class="btn" href="{{ path('project', {id: project.id, slug: project.slug}) }}">{{ 'teaser.project.pitch'|trans({'%title%': project.name, '%cost%': project.userCost}) }}</a>
@@ -31,6 +32,7 @@
 </div>
 <br/>
 {% endfor %}
+</div>
 
 <br/>
 <hr/>

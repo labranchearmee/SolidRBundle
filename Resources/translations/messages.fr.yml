@@ -76,6 +76,8 @@ project:
   state: Avancement du project
   permanent: Ce besoin est permanent. Vous pouvez soutenir le projet dans une quantité que vous déterminez. Privilégiez une action dans la durée avec des paiments réguliers.
 by.organization: Porté par
+organization:
+    projects: Les projets soutenus
 action:
     quantity: Qtté
     updates: Retours

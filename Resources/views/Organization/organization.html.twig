@@ -25,7 +25,7 @@
       <a href="{{ path('project', {'id': project.id, 'slug': project.slug}) }}">{{ project.name }}</a>
       <br/>
       {% for area in project.areas %}
-      <span class="label label-info">{{ area }}</span> &nbsp;
+      <span class="label label-{{ area.class }}">{{ area }}</span> &nbsp;
       {% endfor %}
     </li>
   </ul>

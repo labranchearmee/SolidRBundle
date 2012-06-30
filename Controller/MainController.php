@@ -43,7 +43,7 @@ class MainController extends Controller
       //$ps  = $em->getRepository('BrickstormSolidRBundle:Project')
       //          ->findByCities(array(1));
       $samples  = $em->getRepository('BrickstormSolidRBundle:Project')
-                  ->findBy(array('id'=> array(2,12,22)));
+                  ->findBy(array('id'=> array(2,12,22,13,23)));
       
       return $this->render('BrickstormSolidRBundle:Main:home.html.twig', array(
         'samples' => $samples
