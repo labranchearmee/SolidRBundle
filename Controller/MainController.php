@@ -59,14 +59,17 @@ class MainController extends Controller
       $em = $this->getDoctrine()->getEntityManager();
       $a  = $em->getRepository('BrickstormSolidRBundle:Area')
                ->findOneBySlug($request->get('slug'));
-      //$ps  = $em->getRepository('BrickstormSolidRBundle:Project')
-      //          ->findByCities(array(1));
-      $ps  = $em->getRepository('BrickstormSolidRBundle:Project')
-                ->findBy(array('parent'=>null));
+      $q = $em->createQuery('SELECT p '.
+                            'FROM BrickstormSolidRBundle:Project p '.
+                            'JOIN p.areas a '.
+                            'WHERE a.slug = ?1 '.
+                            'AND p.parent IS NULL '.
+                            'ORDER BY p.id ASC')
+              ->setParameter(1, $request->get('slug'));
       
       return $this->render('BrickstormSolidRBundle:Main:area.html.twig', array(
         'area' => $a,
-        'projects' => $ps
+        'projects' => $q->getResult()
       ));
     }
 

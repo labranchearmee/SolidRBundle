@@ -88,3 +88,6 @@ display:inline-block;
 .progress {
 height: 30px;
 }
+.progress .bar {
+height: 100%;
+}

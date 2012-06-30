@@ -53,6 +53,16 @@ Brickstorm\SolidRBundle\Entity\Project:
         timestampable:
           on: update
   manyToMany:
+    areas:
+      targetEntity: Area
+      joinTable:
+        name: b_solidr__project_areas
+        joinColumns:
+          area_id:
+            referencedColumnName: id
+        inverseJoinColumns:
+          project_id:
+            referencedColumnName: id
     medias:
       targetEntity: Application\Sonata\MediaBundle\Entity\Media
       joinTable:
@@ -69,16 +79,6 @@ Brickstorm\SolidRBundle\Entity\Project:
         name: b_solidr__project_cities
         joinColumns:
           city_id:
-            referencedColumnName: id
-        inverseJoinColumns:
-          project_id:
-            referencedColumnName: id
-    areas:
-      targetEntity: Area
-      joinTable:
-        name: b_solidr__project_areas
-        joinColumns:
-          area_id:
             referencedColumnName: id
         inverseJoinColumns:
           project_id:

@@ -46,6 +46,11 @@ class Action
     private $quantity;
 
     /**
+     * @var string $reccurrent
+     */
+    private $reccurrent;
+
+    /**
      * @var boolean $is_public
      */
     private $is_public;
@@ -314,5 +319,25 @@ class Action
     public function getIsComplete()
     {
         return $this->is_complete;
+    }
+
+    /**
+     * Set reccurrent
+     *
+     * @param string $reccurrent
+     */
+    public function setReccurrent($reccurrent)
+    {
+        $this->reccurrent = $reccurrent;
+    }
+
+    /**
+     * Get reccurrent
+     *
+     * @return string 
+     */
+    public function getReccurrent()
+    {
+        return $this->reccurrent;
     }
 }

@@ -59,7 +59,7 @@ class Project
     /**
      * Get quantities
      */
-    public function getQuantityWanted()
+    public function getWanted()
     {
         if ($children = $this->getChildren()) {
           $qtty = 0;
@@ -71,7 +71,7 @@ class Project
           return $this->quantity_wanted;
         }
     }
-    public function getQuantityRemaining()
+    public function getRemaining()
     {
         if ($children = $this->getChildren()) {
           $qtty = 0;
@@ -508,5 +508,25 @@ class Project
     public function setQuantityRemaining($quantityRemaining)
     {
         $this->quantity_remaining = $quantityRemaining;
+    }
+
+    /**
+     * Get quantity_wanted
+     *
+     * @return integer 
+     */
+    public function getQuantityWanted()
+    {
+        return $this->quantity_wanted;
+    }
+
+    /**
+     * Get quantity_remaining
+     *
+     * @return integer 
+     */
+    public function getQuantityRemaining()
+    {
+        return $this->quantity_remaining;
     }
 }

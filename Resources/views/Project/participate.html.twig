@@ -41,7 +41,7 @@
       <td rowspan="5" style="vertical-align: middle;text-align: center;">
         <select name="quantity">
           <option value="1" selected>1</option>
-          {% for i in range(1, project.quantityRemaining) %}
+          {% for i in range(1, project.remaining) %}
             <option value="{{ i }}">{{ i }}</option>
           {% endfor %}
         </select>

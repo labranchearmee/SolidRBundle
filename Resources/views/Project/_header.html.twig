@@ -49,10 +49,11 @@
 
 </div>
 
-{% if project.quantityWanted > 0 %}
-  <p class="alert">{{ 'project.state'|trans }} : {{ project.achievement/10 }}/{{ project.quantityWanted }}</p>
-  <div class="progress progress-striped">
+{% if project.wanted > 0 %}
+  <div class="alert">{{ 'project.state'|trans }} : {{ project.achievement/10 }}/{{ project.wanted }}
+  <div class="progress progress-warning progress-striped">
     <div class="bar" style="width: {{ project.achievement }}%;"></div>
+  </div>
   </div>
 {% else %}
   <p class="alert">{{ 'project.permanent'|trans }}</p>

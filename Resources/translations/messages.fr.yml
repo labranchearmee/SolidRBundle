@@ -1,4 +1,5 @@
 service:
+    name: Solid'R
     description: agissez avec l'Amndrc !
     dev:
         paypal:
