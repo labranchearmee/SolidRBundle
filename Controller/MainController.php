@@ -114,6 +114,16 @@ class MainController extends Controller
       return $this->render('BrickstormSolidRBundle:Main:cgvu.html.twig');
     }
 
+    public function apiAction(Request $request)
+    {
+      return $this->render('BrickstormSolidRBundle:Main:api.html.twig');
+    }
+
+    public function joinUsAction(Request $request)
+    {
+      return $this->render('BrickstormSolidRBundle:Main:joinUs.html.twig');
+    }
+
     public function contactUsAction(Request $request)
     {
 

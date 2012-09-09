@@ -1,6 +1,8 @@
-service:
+solidr:
     name: Solid'R
     description: agissez avec l'Amndrc !
+    url: http://solidr.amndrc.org
+service:
     dev:
         paypal:
           url: https://www.sandbox.paypal.com/fr/cgi-bin/webscr
@@ -9,8 +11,12 @@ service:
     prod:
         paypal:
           url: https://www.paypal.com/fr/cgi-bin/webscr
-          return.url: http://www.solidr.org
+          return.url: http://solidr.amndrc.org
           account: bbergstorm@gmail.com
+page:
+    title:
+        home: Ossio, les projets de l'Amndrc
+        project: Projet
 cgvu:
     title: Consitions générales d'utilisation
     small: Solid'R
@@ -47,7 +53,10 @@ amndrc:
     url: http://www.solidr.org
 cgvu: Conditions générales d'utilisation
 contact.us: Nous contacter
-powered.by: Réalisé par
+join.us:
+    h1: Nous rejoindre
+    pitch: Vous êtes une association et la plateforme Solidr vous intéresse. Prenez contact avec nous pour en discuter.
+powered.by: Une réalisation
 brickstorm: LaBrancheArmée
 manager: __manager
 layout:
@@ -55,10 +64,6 @@ layout:
     login: Se connecter
     register: Créer un compte
     logged_in_as: Connecté comme
-page:
-    title:
-        home: Ossio, les projets de l'Amndrc
-        project: Projet
 current.projects: Projets en cours
 location: Lieu
 i:
@@ -86,11 +91,13 @@ action:
     wait.for.updates: En cours de réalisation
 send: Envoyer
 send.money: Envoyer l'argent
-
+api:
+  title: API
+  small: Accédez aux données de Solid'R et construisez vos propres services
+  pitch: Accès à des APIs pour intégrer Solid'R à vos services existants, ou intégration d'un service en marque blanche. Contactez-nous !
 search:
   placeholder: Rechercher parmi les projets
   nb_results: projets trouvés
-
 home.intro:
     title: L'aide par l'action concrète 
     service: Solid'R vous permet de découvrir des actions concrètes, proposées par des ONG sur place et pour lesquelles les habitants ont besoin de soutien financier. Agissez concrètement et régulièrement, en choisissant quelles actions vous intéressent. Pour chaque action financée, l'ONG porteuse du projet vous fera un retour rapide (sous un mois environ) avec un compte-rendu de l'action et si possible des photos associées.

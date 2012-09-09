@@ -71,7 +71,7 @@
       <input type="hidden" name="custom" value="merchant_custom_value">
       <input type="hidden" name="invoice" value="SOLIDR-AMNDRC-{{ project.id }}-{{ 'now'|date('Ymdhi') }}">
       <input type="hidden" name="charset" value="utf-8">
-      <input type="hidden" name="image_url" value="https://www.amndrc.org/logo.gif">
+      <input type="hidden" name="image_url" value="{{ asset('bundles/brickstormsolidr/images/paypal/logo.png') }}">
       <input type="hidden" name="return" value="{% if app.environment == 'dev' %}{{ 'service.dev.paypal.return.url'|trans }}{% else %}{{ 'service.prod.paypal.return.url'|trans }}{% endif %}{{ path('paypal_success') }}">
       <input type="hidden" name="cancel_return" value="{% if app.environment == 'dev' %}{{ 'service.dev.paypal.return.url'|trans }}{% else %}{{ 'service.prod.paypal.return.url'|trans }}{% endif %}{{ path('paypal_cancel') }}">
       <!-- N’invite pas le client à ajouter une remarque à son achat -->

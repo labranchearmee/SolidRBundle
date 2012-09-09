@@ -7,40 +7,34 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<title>{{ 'service.name'|trans }}</title>
-	<meta name="description" content="{{ 'service.description'|trans }}">
+	<title>{% block title %}{% endblock %} | {{ 'solidr.name'|trans }}</title>
+	<meta name="description" content="{{ 'solidr.description'|trans }}">
 	<meta name="author" content="Brickstorm.org">
 
   {# og #}
-  <meta property="fb:app_id" content="307305432662524" />
-  <meta property="og:title" content="{{ 'service.name'|trans }}" />
-  <meta property="og:site_name" content="{{ 'service.name'|trans }}" />
+  <meta property="fb:app_id" content="422066694500806" />
+  <meta property="og:title" content="{{ 'solidr.name'|trans }}" />
+  <meta property="og:site_name" content="{{ 'solidr.name'|trans }}" />
   <meta property="og:locale:alternate" content="fr_FR" />
-  <meta property="og:description" content="{{ 'service.description'|trans }}" />
+  <meta property="og:description" content="{{ 'solidr.description'|trans }}" />
   <meta property="og:image" content="?" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="{{ 'service.url'|trans }}" />
+  <meta property="og:url" content="{{ 'solidr.url'|trans }}" />
 
   {# responsive #}
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 
   {# css #}
-  <link rel="stylesheet" href="{{ asset('bundles/brickstormsolidr/bootstrap/css/bootstrap.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('bundles/brickstormsolidr/initializr-bootstrap/css/bootstrap-responsive.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('bundles/brickstormsolidr/initializr-bootstrap/css/style.css') }}">
-    
-	<!--<link rel="stylesheet/less" href="{{ asset('bundles/brickstormsolidr/initializr-bootstrap/less/style.less') }}">-->
-	<script src="{{ asset('bundles/brickstormsolidr/initializr-bootstrap/js/libs/less-1.2.1.min.js') }}"></script> 
-
-	<link rel="stylesheet" href="{{ asset('bundles/brickstormsolidr/style.css') }}">
-
-<style>
-
-</style>
-
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+  {% stylesheets
+      '@BrickstormSolidRBundle/Resources/public/bootstrap/css/bootstrap.min.css'
+      '@BrickstormSolidRBundle/Resources/public/bootstrap/css/bootstrap-responsive.min.css'
+      '@BrickstormSolidRBundle/Resources/public/initializr-bootstrap/css/style.css'
+      '@BrickstormSolidRBundle/Resources/public/style.css'
+        filter='?yui_css'
+        output='css/style.css'
+        %}
+      <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+  {% endstylesheets %}
   </head>
 
   <body>
@@ -60,7 +54,6 @@
       {% block content %}
       {% endblock %}
 
-
       <footer>
         <br>
         <br>
@@ -68,29 +61,26 @@
         <p align="center">
           <a title="{{ 'cgvu'|trans }}" href="{{ path('cgvu') }}">{{ 'cgvu'|trans }}</a> ~ 
           <a title="{{ 'contact.us'|trans }}" href="{{ path('contact_us') }}">{{ 'contact.us'|trans }}</a> ~ 
+          <a title="{{ 'join.us.h1'|trans }}" href="{{ path('join_us') }}">{{ 'join.us'|trans }}</a> ~ 
           <a title="API" href="{{ path('api_intro') }}">API</a>
         </p>
-        <p class="brickstorm">{{ 'powered.by'|trans }} {{ 'brickstorm'|trans }}</p>
+        <p class="brickstorm"><small>{{ 'powered.by'|trans }}</small> <span class="armedwing">{{ 'brickstorm'|trans }}</span></p>
       </footer>
 
     </div> <!-- /container -->
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="{{ asset('bundles/brickstormsolidr/initializr-bootstrap/js/libs/jquery-1.7.1.min.js') }}"><\/script>')</script>
-    
-    <script src="{{ asset('bundles/brickstormsolidr/bootstrap/js/bootstrap.min.js') }}"></script>
 
-    <script src="{{ asset('bundles/brickstormform/js/form.js') }}"></script>
-
-    <script src="{{ asset('bundles/brickstormsolidr/script.js') }}"></script>
+    {% javascripts
+        '@BrickstormSolidRBundle/Resources/public/initializr-bootstrap/js/libs/jquery-1.7.1.min.js'
+        '@BrickstormSolidRBundle/Resources/public/bootstrap/js/bootstrap.min.js'
+        '@BrickstormFormBundle/Resources/public/js/form.js'
+        '@BrickstormSolidRBundle/Resources/public/script.js'
+        filter='?yui_js' 
+        output='js/compiled/script.js'  %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 
     <script>
-    	/*var _gaq=[['_setAccount','UA–29589587–1'],['_trackPageview']];
-    	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
-    	g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-    	s.parentNode.insertBefore(g,s)}(document,'script'));
-      */
-    
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-29589587-1']);
       _gaq.push(['_trackPageview']);

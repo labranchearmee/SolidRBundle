@@ -1,12 +1,31 @@
 {% extends 'BrickstormSolidRBundle::layout.html.twig' %}
 
-{% block title %}{{ 'service.name'|trans }} - {{ 'page.title.home'|trans }}{% endblock %}
+{% block title %}{{ 'page.title.home'|trans }}{% endblock %}
 
 
 {% block content %}
 
+<div class="alert alert-info pull-right" style="width:300px;font-size:1.1em;">
+<h6><big>Quand Internet révolutionne l'aide au développement</big></h6>
+Pas de banque mondiale, pas de fond international, pas de nations unies pour soutenir les initiatives présentées ici. Pas non plus d'objectifs du millénaire. Ni de bénévoles et aucun intermédiaire entre vous et les personnes que vous aidez.
+<br/>
+Simplement une aide directe qui échappe à tout contrôle politique, y compris local, et qui n'induit pas pour ceux qui en bénéficient d'aliénation quelle qu'elle ce soit.
+<br/><br/>
+Solidr vous propose de financer directement et à votre rythme des initiatives locales que vous choisissez parmi celles recensées.
+<br/>
+Pour ceux que vous aidez c'est la possibilité de sortir de l'inaction, du clientélisme, de la corruption pour prendre en main leur avenir et celui de leur village.
+<br/>
+Pour vous c'est la garantie que votre soutient aille là où vous le décidez. Vous êtes tenu au courant des avancées par des comptes, rendus, des photos et des vidéos.
+<br/><br/>
+Concrètement lorsque vous financez un projet vous payez le coût réél du projet plus des frais de collecte et d'envoi d'argent. 
+Soit environ 1,10€ pour 1 euro qui sert à la réalisation du projet.
+<br/>
+Solidr ne gagne pas d'argent sur les transaction effectuées. La plateforme se finance en faisant payer une cotisation aux organisations qui y participent.
 
-<div class="hero-unit">
+
+</div>
+
+<div class="hero-unit" style="margin-right:360px">
   <h1>{{ 'home.intro.title'|trans }}</h1>
   <br/>
   <p>{{ 'home.intro.service'|trans }}</p>
@@ -22,7 +41,7 @@
 </div>
 
 
-<h2>{{ 'i.participate'|trans }} <small>{{ 'teaser.project.title'|trans }}</small></h2>
+<h2>{#{ 'i.participate'|trans }#} <small>{{ 'teaser.project.title'|trans }}</small></h2>
 <br/>
 <div id="samples">
 {% for project in samples %}

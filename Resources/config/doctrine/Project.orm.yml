@@ -83,6 +83,16 @@ Brickstorm\SolidRBundle\Entity\Project:
         inverseJoinColumns:
           project_id:
             referencedColumnName: id
+    participants:
+      targetEntity: Application\Sonata\UserBundle\Entity\User
+      joinTable:
+        name: b_solidr__project_participants
+        joinColumns:
+          participant_id:
+            referencedColumnName: id
+        inverseJoinColumns:
+          project_id:
+            referencedColumnName: id
   oneToMany:
     children:
       targetEntity: Project

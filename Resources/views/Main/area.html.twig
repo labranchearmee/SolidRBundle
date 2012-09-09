@@ -28,7 +28,9 @@
     </small>
   </h3>
   <p class="short-description">
-    {{ 'project.created.by'|trans }} {{ project.creator }} (<a href="{{ path('organization', {'id' : project.organization.id, 'slug' : project.organization.slug}) }}">{{ project.organization }}</a>)
+    {{ 'project.created.by'|trans }} 
+    {% include 'BrickstormSolidRBundle:Main:_popover-creator.html.twig' with {'creator': project.creator} %}
+    ({% include 'BrickstormSolidRBundle:Main:_popover-organization.html.twig' with {'organization': project.organization} %})
     <br/>
     {{ project.description }}
   </p>

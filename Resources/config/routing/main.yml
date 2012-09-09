@@ -1,3 +1,6 @@
+homepage_locale:
+    pattern:  /{_locale}
+    defaults: { _controller: BrickstormSolidRBundle:Main:home }
 homepage:
     pattern:  /
     defaults: { _controller: BrickstormSolidRBundle:Main:home }
@@ -6,20 +9,23 @@ search:
     defaults: { _controller: BrickstormSolidRBundle:Main:search }
     requirements:
         slug: agriculture|construction|sante|social|education|all
-homepage_area:
-    pattern:  /{_locale}/{slug}
-    defaults: { _controller: BrickstormSolidRBundle:Main:area }
-    requirements:
-        slug: agriculture|construction|sante|social|education|all
 cgvu:
     pattern:  /{_locale}/cgvu
     defaults: { _controller: BrickstormSolidRBundle:Main:cgvu }
 contact_us:
     pattern:  /{_locale}/contact-us
     defaults: { _controller: BrickstormSolidRBundle:Main:contactus }
+join_us:
+    pattern:  /{_locale}/join-us
+    defaults: { _controller: BrickstormSolidRBundle:Main:joinus }
 api_intro:
-    pattern:  /
-    defaults: { _controller: BrickstormSolidRBundle:Main:contactus }
+    pattern:  /{_locale}/api
+    defaults: { _controller: BrickstormSolidRBundle:Main:api }
+homepage_area:
+    pattern:  /{_locale}/{slug}
+    defaults: { _controller: BrickstormSolidRBundle:Main:area }
+    requirements:
+        slug: agriculture|construction|sante|social|education|all
 
 #project
 payment_modal:

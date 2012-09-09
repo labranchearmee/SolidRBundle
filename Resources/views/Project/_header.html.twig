@@ -1,3 +1,10 @@
+<div id="social">
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ 'solidr.url'|trans }}{{ app.request.getRequestUri }}" data-via="solidr" data-lang="en">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<iframe scrolling="no" style="border: none; overflow: hidden; height: 20px; width: 100px; " src="https://www.facebook.com/plugins/like.php?api_key=422066694500806&extended_social_context=false&href={{ 'solidr.url'|trans }}{{ app.request.getRequestUri }}&layout=standard&locale=fr_FR&node_type=link&send=true&layout=button_count&extended_social_context=false&show_faces=false&width=100"></iframe>
+</div>
+
 <div class="well">
 
 {% for area in project.areas %}

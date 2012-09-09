@@ -529,4 +529,29 @@ class Project
     {
         return $this->quantity_remaining;
     }
+    /**
+     * @var Application\Sonata\UserBundle\Entity\User
+     */
+    private $participants;
+
+
+    /**
+     * Add participants
+     *
+     * @param Application\Sonata\UserBundle\Entity\User $participants
+     */
+    public function addUser(\Application\Sonata\UserBundle\Entity\User $participants)
+    {
+        $this->participants[] = $participants;
+    }
+
+    /**
+     * Get participants
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getParticipants()
+    {
+        return $this->participants;
+    }
 }

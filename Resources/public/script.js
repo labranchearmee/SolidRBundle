@@ -25,3 +25,6 @@ trigger.click(function(){
 $('#modal .btn-primary').live('click', function(){
   $('#modal form').submit();
 });
+
+
+$('.trigger-popover').popover();
