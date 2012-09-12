@@ -71,6 +71,16 @@ Brickstorm\SolidRBundle\Entity\Organization:
         inverseJoinColumns:
           organization_id:
             referencedColumnName: id
+    cities:
+      targetEntity: Brickstorm\WorldBundle\Entity\City
+      joinTable:
+        name: b_solidr__organization_cities
+        joinColumns:
+          city_id:
+            referencedColumnName: id
+        inverseJoinColumns:
+          organization_id:
+            referencedColumnName: id
   oneToMany:
     children:
       targetEntity: Organization

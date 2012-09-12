@@ -1,1 +1,1 @@
-<a class="trigger-popover" data-content="{{ creator }} est membre de {{ creator.organizations }}" data-title="{{ 'creator'|trans }}: {{ creator }}" href="#">{{ creator }}</a>
+<a class="trigger-popover" data-content="{{ creator }} est {% for s in creator.usersteps %}<br/>{{ s.nodeType }} - {{ s.nodeId }}{% endfor %}" data-title="{{ 'creator'|trans }}: {{ creator }}" href="#">{{ creator }}</a>

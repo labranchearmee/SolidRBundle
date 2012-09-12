@@ -100,8 +100,8 @@ search:
   nb_results: projets trouvés
 home.intro:
     title: L'aide par l'action concrète 
-    service: Solid'R vous permet de découvrir des actions concrètes, proposées par des ONG sur place et pour lesquelles les habitants ont besoin de soutien financier. Agissez concrètement et régulièrement, en choisissant quelles actions vous intéressent. Pour chaque action financée, l'ONG porteuse du projet vous fera un retour rapide (sous un mois environ) avec un compte-rendu de l'action et si possible des photos associées.
-    subscribe: Vous pouvez choisir de soutenir une action dans la durée en choississant un prélèvement régulier. Vous serez alors tenu au courant régulièrement des avancées et des actions réalisées dur place.
+    service: Solid'R vous permet de découvrir des actions concrètes, proposées par des habitants de villages pauvres. Pour chaque projet une relation de confiance a été établie avec le porteur du projet. SolidR est garant de la réalisation des actions que vous financez et pour chacune, SolidR vous ait un retour (sous un mois environ) avec un compte-rendu des réalisations, si possible photos et vidéos de l'avancée du projet.
+    subscribe: -
     launch: Pour découvrir les projets, choissisez le domaine qui intéresse 
 one.project: Un projet au hazard
 teaser.project:
